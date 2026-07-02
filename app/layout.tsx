@@ -18,6 +18,9 @@ const inter = Inter({
 
 import { ThemeProvider } from '@/components/theme-provider'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const siteUrl = basePath ? `https://riteshthawkar.github.io${basePath}` : 'https://riteshthawkar.com'
+
 export const metadata: Metadata = {
   title: 'Ritesh Thawkar | AI Researcher',
   description:
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
     title: 'Ritesh Thawkar | AI Researcher',
     description:
       'Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems. MSc Computer Vision at MBZUAI.',
-    url: 'https://riteshthawkar.com',
+    url: siteUrl,
     siteName: 'Ritesh Thawkar Portfolio',
     images: [
       {
@@ -58,19 +61,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: `${basePath}/icon-light-32x32.png`,
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: `${basePath}/icon-dark-32x32.png`,
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: `${basePath}/icon.svg`,
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: `${basePath}/apple-icon.png`,
   },
 }
 

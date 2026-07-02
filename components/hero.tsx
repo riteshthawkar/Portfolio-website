@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import { MapPin, Download } from "lucide-react"
 import { GridBackground } from "@/components/grid-background"
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+
 export function Hero() {
   const [mounted, setMounted] = useState(false)
 
@@ -91,7 +93,7 @@ export function Hero() {
 
             <div className="flex flex-wrap items-center gap-3 pt-2 pb-4">
               <a
-                href="/resume.pdf"
+                href={`${basePath}/resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border border-foreground bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:border-brand hover:bg-brand hover:text-brand-foreground"

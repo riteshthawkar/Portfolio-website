@@ -3,6 +3,8 @@
 import { Mail, Linkedin, Github, GraduationCap, FileText } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+
 const contactLinks = [
   {
     icon: Mail,
@@ -32,7 +34,7 @@ const contactLinks = [
     icon: FileText,
     label: "CV",
     value: "Ritesh Thawkar",
-    href: "/resume.pdf",
+    href: `${basePath}/resume.pdf`,
   },
 ]
 
