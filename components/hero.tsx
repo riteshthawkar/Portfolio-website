@@ -65,13 +65,6 @@ export function Hero() {
                 href="#publications"
                 className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
               >
-                CVPR
-              </a>
-              {", "}
-              <a
-                href="#publications"
-                className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
-              >
                 ACL
               </a>
               {", "}
@@ -88,7 +81,7 @@ export function Hero() {
               >
                 ICCV
               </a>
-              {", plus deployed AI products serving real users."}
+              {", with preprints in multimodal reasoning and deployed AI products serving real users."}
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2 pb-4">
