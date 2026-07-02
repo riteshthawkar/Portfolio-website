@@ -1,6 +1,7 @@
 "use client"
 
-import { BrainCircuit, Mail, Linkedin, Github, GraduationCap, FileText } from "lucide-react"
+import { Mail, Linkedin, Github, GraduationCap, FileText } from "lucide-react"
+import { HuggingFaceIcon } from "./hugging-face-icon"
 import { ThemeToggle } from "./theme-toggle"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
@@ -31,7 +32,7 @@ const contactLinks = [
     href: "https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ",
   },
   {
-    icon: BrainCircuit,
+    icon: HuggingFaceIcon,
     label: "Hugging Face",
     value: "/Ritesh-hf",
     href: "https://huggingface.co/Ritesh-hf",

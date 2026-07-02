@@ -27,7 +27,7 @@ export function ResearchFocus() {
           <div className="grid gap-0 border-b border-border sm:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             <AnimatedSection className="border-x border-t border-border bg-background px-5 py-6 sm:px-6 sm:py-8">
               <p className="text-xl leading-relaxed text-foreground sm:text-2xl">
-                I am interested in AI systems that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.
+                My current interests center on multimodal models that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.
               </p>
             </AnimatedSection>
 

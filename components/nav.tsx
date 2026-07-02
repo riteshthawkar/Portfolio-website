@@ -1,7 +1,8 @@
 "use client"
 
-import { BrainCircuit, ChevronDown, Github, GraduationCap, Mail } from "lucide-react"
+import { ChevronDown, Github, GraduationCap, Mail } from "lucide-react"
 
+import { HuggingFaceIcon } from "./hugging-face-icon"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,7 +38,7 @@ const connectionLinks = [
   {
     label: "Hugging Face",
     href: "https://huggingface.co/Ritesh-hf",
-    icon: BrainCircuit,
+    icon: HuggingFaceIcon,
   },
 ]
 
