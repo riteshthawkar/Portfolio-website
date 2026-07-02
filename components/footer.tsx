@@ -15,20 +15,20 @@ const contactLinks = [
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "/in/RiteshThawkar",
-    href: "https://linkedin.com/in/RiteshThawkar",
+    value: "/in/ritesh-thawkar-b13192233",
+    href: "https://www.linkedin.com/in/ritesh-thawkar-b13192233/",
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "/RiteshThawkar",
-    href: "https://github.com/RiteshThawkar",
+    value: "/riteshthawkar",
+    href: "https://github.com/riteshthawkar",
   },
   {
     icon: GraduationCap,
     label: "Google Scholar",
     value: "Ritesh Thawkar",
-    href: "https://scholar.google.com/citations?user=nZz-I00AAAAJ&hl=en",
+    href: "https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ",
   },
   {
     icon: FileText,

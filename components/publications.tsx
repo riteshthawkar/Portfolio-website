@@ -167,7 +167,7 @@ export function Publications() {
             <AnimatedSection delay={400}>
               <div className="mt-10 flex justify-center">
                 <PillButton
-                  href="https://scholar.google.com/citations?user=nZz-I00AAAAJ&hl=en"
+                  href="https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ"
                   label="View All on Google Scholar"
                 />
               </div>

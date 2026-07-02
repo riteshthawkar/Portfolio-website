@@ -25,12 +25,12 @@ const connectionLinks = [
   },
   {
     label: "GitHub",
-    href: "https://github.com/RiteshThawkar",
+    href: "https://github.com/riteshthawkar",
     icon: Github,
   },
   {
     label: "Google Scholar",
-    href: "https://scholar.google.com/citations?user=nZz-I00AAAAJ&hl=en",
+    href: "https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ",
     icon: GraduationCap,
   },
 ]
