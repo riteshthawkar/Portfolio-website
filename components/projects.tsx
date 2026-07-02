@@ -58,6 +58,50 @@ const projects = [
     linkLabel: "Visit Nutrigenics.care",
     details: "Designed and developed the platform's web infrastructure to manage user and recipe data efficiently, enhancing scalability and usability. Integrated NutritionGPT to power LLM-based recipe recommendations from image inputs and user preferences. Implemented a personalized recommendation system leveraging LLMs to tailor nutrition and recipe suggestions to individual needs. Optimized backend workflows using Django and PostgreSQL to ensure efficient data handling and faster response times.",
   },
+  {
+    title: "Adaptive Evidence-Grounded VideoQA",
+    description:
+      "Research prototype for budget-aware visual evidence selection and grounded VideoQA analysis.",
+    status: "Research Prototype",
+    impact: "Budget-aware evidence acquisition",
+    tools: ["VideoQA", "Qwen2.5-VL", "Grounding", "Evaluation"],
+    link: "https://github.com/riteshthawkar/adaptive-evidence-grounded-videoqa",
+    linkLabel: "View Code",
+    details: "Built an experimental pipeline for adaptive evidence acquisition in grounded VideoQA. The project focuses on selecting reliable visual evidence under budget constraints, evaluating Qwen2.5-VL behavior, and analyzing grounding performance on NExT-GQA-style tasks.",
+  },
+  {
+    title: "Visual Intelligence Leaderboard",
+    description:
+      "Benchmark and leaderboard tooling for visual intelligence experiments and model comparisons.",
+    status: "Open Source",
+    impact: "Reusable benchmark infrastructure",
+    tools: ["Evaluation", "Leaderboards", "TypeScript", "Dashboards"],
+    link: "https://github.com/riteshthawkar/leaderboard",
+    linkLabel: "View Code",
+    details: "Developed leaderboard tooling for visual intelligence experiments, making it easier to compare model runs, organize benchmark outputs, and present evaluation results in a structured interface.",
+  },
+  {
+    title: "BookRAG",
+    description:
+      "Book and document RAG workspace for retrieval-backed reading, search, and question answering.",
+    status: "Open Source",
+    impact: "Document-grounded RAG workspace",
+    tools: ["RAG", "Document AI", "Retrieval", "LLMs"],
+    link: "https://github.com/riteshthawkar/BookRAG",
+    linkLabel: "View Code",
+    details: "Built a document-focused RAG workspace for ingesting books and documents, retrieving relevant passages, and supporting grounded question answering over longer-form knowledge sources.",
+  },
+  {
+    title: "financegpt",
+    description:
+      "FastAPI and LangChain finance assistant with stock data, market tools, and conversational workflows.",
+    status: "Open Source",
+    impact: "Tool-augmented finance assistant",
+    tools: ["FastAPI", "LangChain", "Finance APIs", "LLM Tools"],
+    link: "https://github.com/riteshthawkar/financegpt",
+    linkLabel: "View Code",
+    details: "Built a finance assistant that combines conversational interfaces with stock data and market tools. The backend uses FastAPI and LangChain-style orchestration to answer finance questions with external tool context.",
+  },
 ]
 
 export function Projects() {
@@ -70,7 +114,7 @@ export function Projects() {
               Work
             </p>
             <h2 className="font-display font-semibold text-3xl tracking-tight text-foreground sm:text-4xl">
-              Systems & Deployments
+              Systems, Tools & Deployments
             </h2>
           </div>
         </AnimatedSection>

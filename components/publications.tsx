@@ -17,7 +17,12 @@ const publications = [
     status: "First Author",
     link: "https://arxiv.org/abs/2606.27376",
     linkLabel: "View Preprint",
-    abstract: "Ask, Solve, Generate studies whether unified LMMs can improve visual understanding and image generation without curated post-training supervision. The framework uses internal proposer, solver, and generator roles with self-derived consistency rewards, including Solver Token Entropy and multi-scale generation evaluation. Across diffusion, rectified-flow, and autoregressive backbones, the method improves both understanding and generation metrics using only unlabeled images."
+    resources: [
+      { label: "Project", href: "https://mbzuai-oryx.github.io/Ask-Solve-Generate/" },
+      { label: "Code", href: "https://github.com/mbzuai-oryx/Ask-Solve-Generate" },
+      { label: "Models", href: "https://huggingface.co/collections/Ritesh-hf/ask-solve-generate-paper-models" },
+    ],
+    abstract: String.raw`Most unified large multimodal models (LMMs) that support both visual understanding and image generation still rely on curated post-training supervision, such as human annotations, preference labels, or external reward models. We ask whether a unified LMM can improve both abilities autonomously using only unlabeled images. We propose a self-evolving training framework with three internal roles: a Proposer that generates visual questions, a Solver that answers and evaluates them, and a Generator that synthesizes images. Training uses only self-derived consistency signals, without human annotations, preference labels, or task-trained external reward/judge models. To stabilize learning, we introduce Solver Token Entropy (STE), a continuous difficulty signal based on token-level prediction uncertainty that remains useful even when sample-level consistency becomes unreliable. For image generation, we design a multi-scale internal evaluation scheme that combines question-answer fidelity scoring with cycle-consistent captioning. This creates a solver-mediated coupling, where better visual understanding enables more reliable generation assessment and stronger internal training signals. The framework preserves the same role decomposition, reward logic, and training schedule across diffusion-based BLIP3o, rectified-flow BAGEL, and autoregressive VARGPT-v1.1 architectures, requiring only each backbone's native prompting and generation interface. Across eight understanding metrics, our method consistently improves over the corresponding base models. On BAGEL, it achieves a $+3.5\%$ absolute gain on MMMU and improves GenEval image generation performance from $82\%$ to $85\%$. Code and models are publicly released.`
   },
   {
     id: "S3",
@@ -30,7 +35,10 @@ const publications = [
     status: null,
     link: "https://arxiv.org/abs/2606.27373",
     linkLabel: "View Preprint",
-    abstract: "This work identifies visual under-conditioning as a failure mode in self-evolving LMMs, where models can rely on language priors instead of visual evidence. It introduces VISE, an unsupervised self-evolution framework that regularizes visual conditioning through geometric and semantic invariance rewards. Experiments across 18 benchmarks show improved captioning, visual question answering, and reduced object hallucination across model families and scales."
+    resources: [
+      { label: "Project", href: "https://mbzuai-oryx.github.io/VISE" },
+    ],
+    abstract: String.raw`Recently, self-evolving large multimodal models (LMMs) have received attention for improving visual reasoning in a purely unsupervised setting. However, multi-role self-play and self-consistency reward schemes in existing self-evolving LMMs optimize answer agreement without ensuring the decoder attends to visual content, relying instead on statistical language priors to produce self consistent outputs. This leads to a persistent failure mode we term visual under-conditioning, where the decoder relies on language priors rather than the image during generation, manifesting as insufficient attention to visual tokens. As a result, current self-evolving LMMs struggle on vision--language understanding tasks such as image captioning and visual question answering. To address this, we propose VISE (Visual Invariance Self-Evolution), a purely unsupervised self-evolving framework that directly regularizes the model's visual conditioning policy through two complementary invariance-based rewards: a geometric invariance reward that enforces spatial consistency under known transformations, and a semantic invariance reward that penalizes evidence-agnostic generation by requiring the model to recognize the absence of evidence when predicted regions are perturbed. VISE operates within a single model without specialist roles, external reward models, or annotations, and is trained on raw unlabeled images. Experiments on 18 benchmarks demonstrate the efficacy of our approach. Using Qwen3-VL-2B as the base model, VISE achieves gains of $+16.85$ CIDEr on COCO and $+19.66$ CIDEr on TextCaps, reduces object hallucination by $5.0$ Chair-I points, and generalizes across four model families and scales. Our code and models are available at https://mbzuai-oryx.github.io/VISE`
   },
   {
     id: "S1",
@@ -43,7 +51,11 @@ const publications = [
     status: null,
     link: "https://arxiv.org/abs/2602.20161",
     linkLabel: "View Preprint",
-    abstract: "Unified multimodal models, capable of both understanding and generating visual content within a single architecture, currently face challenges regarding data requirements and heavy computational demands, making them unsuitable for edge device deployment. The paper introduces Mobile-O, a compact vision-language-diffusion model designed to bring unified multimodal intelligence to mobile devices. Its core component, the Mobile Conditioning Projector (MCP), integrates vision-language features with a diffusion generator. Despite its efficiency, Mobile-O achieves competitive or superior performance compared to other unified models, reaching 74% on GenEval and outperforming models like Show-O and JanusFlow."
+    resources: [
+      { label: "Project", href: "https://amshaker.github.io/Mobile-O/" },
+      { label: "Code", href: "https://github.com/Amshaker/Mobile-O" },
+    ],
+    abstract: String.raw`Unified multimodal models can both understand and generate visual content within a single architecture. Existing models, however, remain data-hungry and too heavy for deployment on edge devices. We present Mobile-O, a compact vision-language-diffusion model that brings unified multimodal intelligence to a mobile device. Its core module, the Mobile Conditioning Projector (MCP), fuses vision-language features with a diffusion generator using depthwise-separable convolutions and layerwise alignment. This design enables efficient cross-modal conditioning with minimal computational cost. Trained on only a few million samples and post-trained in a novel quadruplet format (generation prompt, image, question, answer), Mobile-O jointly enhances both visual understanding and generation capabilities. Despite its efficiency, Mobile-O attains competitive or superior performance compared to other unified models, achieving 74% on GenEval and outperforming Show-O and JanusFlow by 5% and 11%, while running 6x and 11x faster, respectively. For visual understanding, Mobile-O surpasses them by 15.3% and 5.1% averaged across seven benchmarks. Running in only ~3s per 512x512 image on an iPhone, Mobile-O establishes the first practical framework for real-time unified multimodal understanding and generation on edge devices. We hope Mobile-O will ease future research in real-time unified multimodal intelligence running entirely on-device with no cloud dependency. Our code, models, datasets, and mobile application are publicly available at https://amshaker.github.io/Mobile-O/`
   },
   {
     id: "C1",
@@ -56,7 +68,12 @@ const publications = [
     status: null,
     link: "https://arxiv.org/abs/2511.16672",
     linkLabel: "View Preprint",
-    abstract: "Recent advancements in large multimodal models (LMMs) have led to impressive capabilities in reasoning and perception, but their training often relies on human-curated data or external reward models, which can limit their autonomy and scalability. To address this, a new framework called EvoLMM has been proposed, aiming to enhance LMM reasoning in a purely unsupervised manner without annotated data or reward distillation. EvoLMM introduces a self-evolving framework that instantiates two cooperative agents from a single backbone model: a Proposer and a Solver. When using Qwen2.5-VL as the base model, EvoLMM demonstrates consistent improvements of up to approximately 3% on multimodal math-reasoning benchmarks like ChartQA, MathVista, and MathVision, using only raw training images."
+    resources: [
+      { label: "Project", href: "https://mbzuai-oryx.github.io/EvoLMM/" },
+      { label: "Code", href: "https://github.com/mbzuai-oryx/EvoLMM" },
+      { label: "Models", href: "https://huggingface.co/omkarthawakar/EvoLMM" },
+    ],
+    abstract: String.raw`Recent advances in large multimodal models (LMMs) have enabled impressive reasoning and perception abilities, yet most existing training pipelines still depend on human-curated data or externally verified reward models, limiting their autonomy and scalability. In this work, we strive to improve LMM reasoning capabilities in a purely unsupervised fashion (without any annotated data or reward distillation). To this end, we propose a self-evolving framework, named EvoLMM, that instantiates two cooperative agents from a single backbone model: a Proposer, which generates diverse, image-grounded questions, and a Solver, which solves them through internal consistency, where learning proceeds through a continuous self-rewarding process. This dynamic feedback encourages both the generation of informative queries and the refinement of structured reasoning without relying on ground-truth or human judgments. When using the popular Qwen2.5-VL as the base model, our EvoLMM yields consistent gains upto $\sim$3\% on multimodal math-reasoning benchmarks, including ChartQA, MathVista, and MathVision, using only raw training images. We hope our simple yet effective approach will serve as a solid baseline easing future research in self-improving LMMs in a fully-unsupervised fashion. Our code and models are available at https://github.com/mbzuai-oryx/EvoLMM.`
   },
   {
     id: "S4",
@@ -69,7 +86,10 @@ const publications = [
     status: null,
     link: "https://arxiv.org/abs/2509.15293",
     linkLabel: "View Preprint",
-    abstract: "This paper evaluates whether foundation models can perform step-by-step reasoning for embodied decision-making tasks. It introduces the Foundation Model Embodied Reasoning benchmark, covering multimodal observations, physical constraints, safety, and action reasoning across 10 tasks and 8 embodiments. The benchmark highlights current LMM strengths and limitations for grounded robot intelligence."
+    resources: [
+      { label: "Project", href: "https://mbzuai-oryx.github.io/FoMER-Bench/" },
+    ],
+    abstract: String.raw`Embodied agents operating in the physical world must make decisions that are not only effective but also safe, spatially coherent, and grounded in context. While recent advances in large multimodal models (LMMs) have shown promising capabilities in visual understanding and language generation, their ability to perform structured reasoning for real-world embodied tasks remains underexplored. In this work, we aim to understand how well foundation models can perform step-by-step reasoning in embodied environments. To this end, we propose the Foundation Model Embodied Reasoning (FoMER) benchmark, designed to evaluate the reasoning capabilities of LMMs in complex embodied decision-making scenarios. Our benchmark spans a diverse set of tasks that require agents to interpret multimodal observations, reason about physical constraints and safety, and generate valid next actions in natural language. We present (i) a large-scale, curated suite of embodied reasoning tasks, (ii) a novel evaluation framework that disentangles perceptual grounding from action reasoning, and (iii) empirical analysis of several leading LMMs under this setting. Our benchmark includes over 1.1k samples with detailed step-by-step reasoning across 10 tasks and 8 embodiments, covering three different robot types. Our results highlight both the potential and current limitations of LMMs in embodied reasoning, pointing towards key challenges and opportunities for future research in robot intelligence. Our data and code will be made publicly available.`
   },
   {
     id: "S5",
@@ -82,7 +102,10 @@ const publications = [
     status: null,
     link: "https://arxiv.org/abs/2503.10621",
     linkLabel: "View Preprint",
-    abstract: "DriveLMM-o1 introduces a step-by-step reasoning dataset and benchmark for autonomous driving scenario understanding. The dataset covers perception, prediction, and planning questions with reasoning traces, and the accompanying LMM improves both answer accuracy and reasoning quality over previous open-source models. The work targets more interpretable multimodal reasoning for complex driving scenes."
+    resources: [
+      { label: "Code", href: "https://github.com/ayesha-ishaq/DriveLMM-o1" },
+    ],
+    abstract: String.raw`While large multimodal models (LMMs) have demonstrated strong performance across various Visual Question Answering (VQA) tasks, certain challenges require complex multi-step reasoning to reach accurate answers. One particularly challenging task is autonomous driving, which demands thorough cognitive processing before decisions can be made. In this domain, a sequential and interpretive understanding of visual cues is essential for effective perception, prediction, and planning. Nevertheless, common VQA benchmarks often focus on the accuracy of the final answer while overlooking the reasoning process that enables the generation of accurate responses. Moreover, existing methods lack a comprehensive framework for evaluating step-by-step reasoning in realistic driving scenarios. To address this gap, we propose DriveLMM-o1, a new dataset and benchmark specifically designed to advance step-wise visual reasoning for autonomous driving. Our benchmark features over 18k VQA examples in the training set and more than 4k in the test set, covering diverse questions on perception, prediction, and planning, each enriched with step-by-step reasoning to ensure logical inference in autonomous driving scenarios. We further introduce a large multimodal model that is fine-tuned on our reasoning dataset, demonstrating robust performance in complex driving scenarios. In addition, we benchmark various open-source and closed-source methods on our proposed dataset, systematically comparing their reasoning capabilities for autonomous driving tasks. Our model achieves a +7.49% gain in final answer accuracy, along with a 3.62% improvement in reasoning score over the previous best open-source model. Our framework, dataset, and model are available at https://github.com/ayesha-ishaq/DriveLMM-o1.`
   },
   {
     id: "C2",
@@ -95,7 +118,12 @@ const publications = [
     status: "Accepted",
     link: "https://arxiv.org/abs/2505.18152",
     linkLabel: "View Paper",
-    abstract: "Arabic poetry is a rich and culturally significant form of expression, characterized by layered meanings, stylistic diversity, and historical continuity. Despite the strong performance of Large Language Models (LLMs) in various languages and tasks, their ability to comprehend Arabic poetry remains largely unexplored. This paper introduces \"Fann or Flop,\" the first benchmark specifically designed to evaluate LLMs' understanding of Arabic poetry. It covers 12 historical eras and includes 14 core poetic genres and diverse metrical forms. Evaluations reveal that most state-of-the-art LLMs struggle with poetic understanding, even if they perform well on standard Arabic benchmarks."
+    resources: [
+      { label: "Project", href: "https://mbzuai-oryx.github.io/FannOrFlop/" },
+      { label: "Code", href: "https://github.com/mbzuai-oryx/FannOrFlop" },
+      { label: "Dataset", href: "https://huggingface.co/datasets/omkarthawakar/FannOrFlop" },
+    ],
+    abstract: String.raw`Arabic poetry is one of the richest and most culturally rooted forms of expression in the Arabic language, known for its layered meanings, stylistic diversity, and deep historical continuity. Although large language models (LLMs) have demonstrated strong performance across languages and tasks, their ability to understand Arabic poetry remains largely unexplored. In this work, we introduce \emph{Fann or Flop}, the first benchmark designed to assess the comprehension of Arabic poetry by LLMs in 12 historical eras, covering 14 core poetic genres and a variety of metrical forms, from classical structures to contemporary free verse. The benchmark comprises a curated corpus of poems with explanations that assess semantic understanding, metaphor interpretation, prosodic awareness, and cultural context. We argue that poetic comprehension offers a strong indicator for testing how good the LLM understands classical Arabic through Arabic poetry. Unlike surface-level tasks, this domain demands deeper interpretive reasoning and cultural sensitivity. Our evaluation of state-of-the-art LLMs shows that most models struggle with poetic understanding despite strong results on standard Arabic benchmarks. We release "Fann or Flop" along with the evaluation suite as an open-source resource to enable rigorous evaluation and advancement for Arabic language models. Code is available at: https://github.com/mbzuai-oryx/FannOrFlop.`
   },
   {
     id: "C3",
@@ -105,9 +133,15 @@ const publications = [
       "Omkar Thawakar, Dinura Dissanayake, Ketan Pravin More, Ritesh Thawkar, et al.",
     type: "Conference",
     status: "Accepted",
-    link: "https://arxiv.org/abs/2501.06186",
+    link: "https://aclanthology.org/2025.findings-acl.1247/",
     linkLabel: "View Paper",
-    abstract: "Reasoning is a fundamental capability for solving complex multi-step problems, particularly in visual contexts where sequential step-wise understanding is essential. We propose a comprehensive framework for advancing step-by-step visual reasoning in large language models (LMMs). First, we introduce a visual reasoning benchmark designed to evaluate multi-step reasoning tasks. Second, we propose a novel metric assessing visual reasoning quality emphasizing both correctness and logical coherence. Third, we present a new multimodal visual reasoning model, named LlamaV-o1, trained using a multi-step curriculum learning approach. LlamaV-o1 outperforms existing open-source models and performs favorably against closed-source proprietary models."
+    resources: [
+      { label: "arXiv", href: "https://arxiv.org/abs/2501.06186" },
+      { label: "Project", href: "https://mbzuai-oryx.github.io/LlamaV-o1/" },
+      { label: "Code", href: "https://github.com/mbzuai-oryx/LlamaV-o1" },
+      { label: "Models", href: "https://huggingface.co/omkarthawakar/LlamaV-o1" },
+    ],
+    abstract: String.raw`Reasoning is a fundamental capability for solving complex multi-step problems, particularly in visual contexts where sequential step-wise understanding is essential. Existing approaches lack a comprehensive framework for evaluating visual reasoning and do not emphasize step-wise problem-solving. To this end, we propose a comprehensive framework for advancing step-by-step visual reasoning in large language models (LMMs) through three key contributions. First, we introduce a visual reasoning benchmark specifically designed to evaluate multi-step reasoning tasks. The benchmark presents a diverse set of challenges with eight different categories ranging from complex visual perception to scientific reasoning with over 4k reasoning steps in total, enabling robust evaluation of LLMs' abilities to perform accurate and interpretable visual reasoning across multiple steps. Second, we propose a novel metric that assesses visual reasoning quality at the granularity of individual steps, emphasizing both correctness and logical coherence. The proposed metric offers deeper insights into reasoning performance compared to traditional end-task accuracy metrics. Third, we present a new multimodal visual reasoning model, named LlamaV-o1, trained using a multi-step curriculum learning approach, where tasks are progressively organized to facilitate incremental skill acquisition and problem-solving. The proposed LlamaV-o1 is designed for multi-step reasoning and learns step-by-step through a structured training paradigm. Extensive experiments show that our LlamaV-o1 outperforms existing open-source models and performs favorably against close-source proprietary models. Compared to the recent Llava-CoT, our LlamaV-o1 achieves an average score of 67.3 with an absolute gain of 3.8\% across six benchmarks while being 5 times faster during inference scaling. Our benchmark, model, and code are publicly available.`
   },
   {
     id: "C4",
@@ -118,9 +152,14 @@ const publications = [
       "Sara Ghaboura, Ketan Pravin More, Ritesh Thawkar, Wafa Al Ghallabi, Omkar Thawakar, Fahad Shahbaz Khan, Hisham Cholakkal, Salman Khan, Rao Muhammad Anwer",
     type: "Conference",
     status: "Accepted",
-    link: "https://arxiv.org/abs/2502.14865",
+    link: "https://aclanthology.org/2025.findings-acl.1211/",
     linkLabel: "View Paper",
-    abstract: "Understanding historical and cultural artifacts requires human expertise and advanced computational techniques. While large multimodal models (LMMs) offer promising support, their evaluation necessitates a standardized benchmark. This paper introduces TimeTravel, a benchmark comprising 10,250 expert-verified samples spanning 266 distinct cultures across 10 major historical regions. It offers a structured dataset and robust evaluation framework to assess AI models' capabilities in classification, interpretation, and historical comprehension. By evaluating closed- and open-source LMMs, the authors identify their strengths and limitations in handling historically significant artifacts."
+    resources: [
+      { label: "arXiv", href: "https://arxiv.org/abs/2502.14865" },
+      { label: "Project", href: "https://mbzuai-oryx.github.io/TimeTravel/" },
+      { label: "Code", href: "https://github.com/mbzuai-oryx/timetravel" },
+    ],
+    abstract: String.raw`Understanding historical and cultural artifacts demands human expertise and advanced computational techniques, yet the process remains complex and time-intensive. While large multimodal models offer promising support, their evaluation and improvement require a standardized benchmark. To address this, we introduce TimeTravel, a benchmark of 10,250 expert-verified samples spanning 266 distinct cultures across 10 major historical regions. Designed for AI-driven analysis of manuscripts, artworks, inscriptions, and archaeological discoveries, TimeTravel provides a structured dataset and robust evaluation framework to assess AI models' capabilities in classification, interpretation, and historical comprehension. By integrating AI with historical research, TimeTravel fosters AI-powered tools for historians, archaeologists, researchers, and cultural tourists to extract valuable insights while ensuring technology contributes meaningfully to historical discovery and cultural heritage preservation. We evaluate contemporary AI models on TimeTravel, highlighting their strengths and identifying areas for improvement. Our goal is to establish AI as a reliable partner in preserving cultural heritage, ensuring that technological advancements contribute meaningfully to historical discovery. Our code is available at: \url{https://github.com/mbzuai-oryx/TimeTravel}.`
   },
   {
     id: "C5",
@@ -133,7 +172,10 @@ const publications = [
     status: "Accepted",
     link: "https://arxiv.org/abs/2508.14039",
     linkLabel: "View Paper",
-    abstract: "Composed video retrieval aims to retrieve a target video based on a query video and a textual description detailing specific modifications. Standard frameworks often struggle with fine-grained compositional queries. To overcome this, researchers introduce a novel dataset called Dense-WebVid-CoVR, designed to capture fine-grained and composed actions across diverse video segments. It comprises 1.6 million samples with dense modification text. The paper develops an integrated model utilizing a grounded text encoder for precise visual-textual alignment. The proposed model achieves state-of-the-art results, including 71.3% Recall@1 in the visual+text setting."
+    resources: [
+      { label: "Code", href: "https://github.com/OmkarThawakar/BSE-CoVR" },
+    ],
+    abstract: String.raw`Composed video retrieval is a challenging task that strives to retrieve a target video based on a query video and a textual description detailing specific modifications. Standard retrieval frameworks typically struggle to handle the complexity of fine-grained compositional queries and variations in temporal understanding limiting their retrieval ability in the fine-grained setting. To address this issue, we introduce a novel dataset that captures both fine-grained and composed actions across diverse video segments, enabling more detailed compositional changes in retrieved video content. The proposed dataset, named Dense-WebVid-CoVR, consists of 1.6 million samples with dense modification text that is around seven times more than its existing counterpart. We further develop a new model that integrates visual and textual information through Cross-Attention (CA) fusion using grounded text encoder, enabling precise alignment between dense query modifications and target videos. The proposed model achieves state-of-the-art results surpassing existing methods on all metrics. Notably, it achieves 71.3\% Recall@1 in visual+text setting and outperforms the state-of-the-art by 3.4\%, highlighting its efficacy in terms of leveraging detailed video descriptions and dense modification texts. Our proposed dataset, code, and model are available at :https://github.com/OmkarThawakar/BSE-CoVR`
   },
 ]
 
@@ -196,6 +238,20 @@ function PublicationItem({ pub }: { pub: typeof publications[0] }) {
             {pub.status}
           </span>
         )}
+      </div>
+
+      <div className="flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()}>
+        {pub.resources.map((resource) => (
+          <a
+            key={resource.href}
+            href={resource.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-border bg-background px-2.5 py-1 font-sans text-xs font-medium text-muted-foreground transition-colors hover:border-brand hover:text-brand"
+          >
+            {resource.label}
+          </a>
+        ))}
       </div>
 
       {/* Hidden Detail: Abstract */}

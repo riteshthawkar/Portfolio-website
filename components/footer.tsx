@@ -1,6 +1,6 @@
 "use client"
 
-import { Mail, Linkedin, Github, GraduationCap, FileText } from "lucide-react"
+import { BrainCircuit, Mail, Linkedin, Github, GraduationCap, FileText } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
@@ -31,6 +31,12 @@ const contactLinks = [
     href: "https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ",
   },
   {
+    icon: BrainCircuit,
+    label: "Hugging Face",
+    value: "/Ritesh-hf",
+    href: "https://huggingface.co/Ritesh-hf",
+  },
+  {
     icon: FileText,
     label: "CV",
     value: "Ritesh Thawkar",
@@ -40,6 +46,7 @@ const contactLinks = [
 
 const navLinks = [
   { label: "About", href: "#about" },
+  { label: "Focus", href: "#focus" },
   { label: "Publications", href: "#publications" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
@@ -55,8 +62,11 @@ export function Footer() {
           <h3 className="mb-2 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             Ritesh Thawkar
           </h3>
-          <p className="mb-8 text-sm text-muted-foreground">
+          <p className="mb-3 text-sm text-muted-foreground">
             MSc Computer Vision at MBZUAI
+          </p>
+          <p className="mb-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
+            Open to research collaboration on multimodal reasoning, self-evolving VLMs, grounded VideoQA, evaluation, and applied agentic AI systems.
           </p>
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
             {contactLinks.map((link) => (

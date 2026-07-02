@@ -1,5 +1,6 @@
 import { Nav } from "@/components/nav"
 import { Hero } from "@/components/hero"
+import { ResearchFocus } from "@/components/research-focus"
 import { Publications } from "@/components/publications"
 import { Projects } from "@/components/projects"
 import { Experience } from "@/components/experience"
@@ -13,6 +14,7 @@ export default function Page() {
       <Nav />
       <main className="relative z-10">
         <Hero />
+        <ResearchFocus />
         <Publications />
         <Projects />
         <Experience />

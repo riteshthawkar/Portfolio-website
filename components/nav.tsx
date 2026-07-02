@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronDown, Github, GraduationCap, Mail } from "lucide-react"
+import { BrainCircuit, ChevronDown, Github, GraduationCap, Mail } from "lucide-react"
 
 import {
   DropdownMenu,
@@ -11,6 +11,7 @@ import {
 
 const links = [
   { label: "About", href: "#about" },
+  { label: "Focus", href: "#focus" },
   { label: "Publications", href: "#publications" },
   { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
@@ -32,6 +33,11 @@ const connectionLinks = [
     label: "Google Scholar",
     href: "https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ",
     icon: GraduationCap,
+  },
+  {
+    label: "Hugging Face",
+    href: "https://huggingface.co/Ritesh-hf",
+    icon: BrainCircuit,
   },
 ]
 
