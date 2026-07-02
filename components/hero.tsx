@@ -60,28 +60,7 @@ export function Hero() {
               {", where I work on VLM reasoning, self-evolving LMMs, and retrieval-backed AI agents."}
             </p>
             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {"My work spans published research at "}
-              <a
-                href="#publications"
-                className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
-              >
-                ACL
-              </a>
-              {", "}
-              <a
-                href="#publications"
-                className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
-              >
-                EMNLP
-              </a>
-              {", and "}
-              <a
-                href="#publications"
-                className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
-              >
-                ICCV
-              </a>
-              {", with preprints in multimodal reasoning and deployed AI products serving real users."}
+              I like building systems that connect research ideas with useful, reliable AI products.
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2 pb-4">
