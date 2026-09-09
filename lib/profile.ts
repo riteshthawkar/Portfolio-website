@@ -70,7 +70,6 @@ export interface ProfileData {
     dblpPid: string
   }
   cv: {
-    publicationLimit: number
     languages: string[]
     interests: string[]
   }

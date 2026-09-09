@@ -39,7 +39,6 @@ const profileSchema = z.object({
     dblpPid: z.string().min(3),
   }),
   cv: z.object({
-    publicationLimit: z.number().int().positive(),
     languages: z.array(z.string().min(2)).min(1),
     interests: z.array(z.string().min(2)).min(1),
   }),

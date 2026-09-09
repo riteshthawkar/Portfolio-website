@@ -95,13 +95,13 @@ function publicationVenue(publication) {
 
 const publications = profile.publications
   .filter((publication) => publication.includeInCv)
-  .slice(0, profile.cv.publicationLimit)
   .map((publication) => {
     const title = rawLink(
       publication.link,
       "\\textbf{" + latex(sentence(publication.title)) + "}",
     )
     return [
+      "  \\par\\Needspace{5\\baselineskip}",
       "  \\item[\\textbf{" + latex(publicationLabel(publication)) + "}]",
       "    " +
         latex(sentence(publication.authors)) +
@@ -140,6 +140,7 @@ const projects = profile.projects
 const experiences = profile.experiences
   .map((item) =>
     [
+      "  \\par\\Needspace{12\\baselineskip}",
       "  \\item \\begin{tabular*}{\\linewidth}[t]{@{\\extracolsep{\\fill}}lr}",
       "    \\textbf{" + latex(item.company) + "} & \\textit{" + latex(item.period) + "} \\\\",
       "    \\textit{" + latex(item.role) + "} & " + latex(item.location),
@@ -180,6 +181,7 @@ const document = [
   "\\usepackage{xcolor}",
   "\\usepackage{tabularx}",
   "\\usepackage{titlesec}",
+  "\\usepackage{needspace}",
   "\\usepackage{microtype}",
   "",
   "\\definecolor{linkblue}{HTML}{000099}",
@@ -192,7 +194,7 @@ const document = [
   "\\raggedbottom",
   "\\setlist[itemize,1]{label=\\textbullet,leftmargin=0.8em,labelsep=0.35em,itemsep=0.55em,topsep=0.25em,parsep=0pt,partopsep=0pt}",
   "\\setlist[itemize,2]{label=\\textopenbullet,leftmargin=1.15em,labelsep=0.35em,itemsep=0.28em,topsep=0.18em,parsep=0pt,partopsep=0pt}",
-  "\\setlist[description]{leftmargin=3.85em,labelwidth=3.2em,labelsep=0.5em,itemsep=0.55em,topsep=0.2em,parsep=0pt,partopsep=0pt}",
+  "\\setlist[description]{leftmargin=4.05em,labelwidth=3.35em,labelsep=0.6em,itemsep=0.55em,topsep=0.2em,parsep=0pt,partopsep=0pt}",
   "\\titleformat{\\section}{\\Large\\bfseries\\scshape}{}{0pt}{}[\\vspace{0.05em}\\titlerule]",
   "\\titlespacing*{\\section}{0pt}{0.7em}{0.45em}",
   "",
@@ -223,6 +225,7 @@ const document = [
   projects,
   "\\end{itemize}",
   "",
+  "\\Needspace{14\\baselineskip}",
   "\\section*{Experience}",
   "\\begin{itemize}",
   experiences,
@@ -245,6 +248,6 @@ mkdirSync(new URL("../cv", import.meta.url), { recursive: true })
 writeFileSync(new URL("../cv/resume.tex", import.meta.url), document)
 console.log(
   "Generated cv/resume.tex with " +
-    profile.publications.filter((item) => item.includeInCv).slice(0, profile.cv.publicationLimit).length +
-    " selected publications.",
+    profile.publications.filter((item) => item.includeInCv).length +
+    " publications.",
 )
