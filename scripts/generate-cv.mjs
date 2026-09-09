@@ -31,6 +31,14 @@ function textLink(url, label) {
   return rawLink(url, latex(label))
 }
 
+function emphasizeAuthorName(authors) {
+  const escapedName = latex(profile.person.name)
+  return latex(sentence(authors)).replaceAll(
+    escapedName,
+    "\\textbf{" + escapedName + "}",
+  )
+}
+
 function sentence(value) {
   const text = String(value).trim()
   return /[.!?]$/.test(text) ? text : text + "."
@@ -104,7 +112,7 @@ const publications = profile.publications
       "  \\par\\Needspace{5\\baselineskip}",
       "  \\item[\\textbf{" + latex(publicationLabel(publication)) + "}]",
       "    " +
-        latex(sentence(publication.authors)) +
+        emphasizeAuthorName(publication.authors) +
         " (" +
         latex(publication.sortDate.slice(0, 4)) +
         "). " +
