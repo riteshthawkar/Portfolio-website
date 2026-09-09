@@ -3,6 +3,7 @@
 import { Mail, Linkedin, Github, GraduationCap, FileText } from "lucide-react"
 import { HuggingFaceIcon } from "./hugging-face-icon"
 import { ThemeToggle } from "./theme-toggle"
+import { profile } from "@/lib/profile"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 
@@ -10,37 +11,37 @@ const contactLinks = [
   {
     icon: Mail,
     label: "Mail",
-    value: "riteshthawkar2003@gmail.com",
-    href: "mailto:riteshthawkar2003@gmail.com",
+    value: profile.person.email,
+    href: `mailto:${profile.person.email}`,
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: "/in/ritesh-thawkar-b13192233",
-    href: "https://www.linkedin.com/in/ritesh-thawkar-b13192233/",
+    value: profile.links.linkedin,
+    href: profile.links.linkedin,
   },
   {
     icon: Github,
     label: "GitHub",
-    value: "/riteshthawkar",
-    href: "https://github.com/riteshthawkar",
+    value: profile.links.github,
+    href: profile.links.github,
   },
   {
     icon: GraduationCap,
     label: "Google Scholar",
-    value: "Ritesh Thawkar",
-    href: "https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ",
+    value: profile.person.name,
+    href: profile.links.scholar,
   },
   {
     icon: HuggingFaceIcon,
     label: "Hugging Face",
-    value: "/Ritesh-hf",
-    href: "https://huggingface.co/Ritesh-hf",
+    value: profile.links.huggingFace,
+    href: profile.links.huggingFace,
   },
   {
     icon: FileText,
     label: "CV",
-    value: "Ritesh Thawkar",
+    value: profile.person.name,
     href: `${basePath}/resume.pdf`,
   },
 ]
@@ -61,13 +62,13 @@ export function Footer() {
         {/* Contact Bento */}
         <div className="flex flex-col items-center justify-center border-b border-border bg-background px-6 py-10 text-center sm:px-10 sm:py-12">
           <h3 className="mb-2 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Ritesh Thawkar
+            {profile.person.name}
           </h3>
           <p className="mb-3 text-sm text-muted-foreground">
-            MSc Computer Vision at MBZUAI
+            {profile.person.currentRole}
           </p>
           <p className="mb-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Open to research collaboration on multimodal reasoning, self-evolving VLMs, grounded VideoQA, evaluation, and applied agentic AI systems.
+            {profile.research.openTo[0]}
           </p>
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
             {contactLinks.map((link) => (
@@ -89,7 +90,7 @@ export function Footer() {
         <div className="px-6 py-5 sm:px-10">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-muted-foreground">
-              Ritesh Thawkar | {new Date().getFullYear()}
+              {profile.person.name} | {new Date().getFullYear()}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
               <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">

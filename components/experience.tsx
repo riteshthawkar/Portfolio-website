@@ -1,47 +1,7 @@
 "use client"
 
 import { AnimatedSection } from "./animated-section"
-
-const experiences = [
-  {
-    role: "Research Assistant",
-    company: "Mohamed Bin Zayed University of Artificial Intelligence",
-    location: "Abu Dhabi, UAE",
-    period: "Sep 2024 - Present",
-    highlights: [
-      "Developing Novel Visual Reasoning Benchmarks to stress-test the sequential logic capabilities of VLLMs.",
-      "Pioneering Composed Video Retrieval techniques utilizing dense video descriptions for fine-grained understanding.",
-      "Engineered core document retrieval systems and scalable web agents powering the enterprise Lawa.AI platform.",
-      "Built and optimized the AI infrastructure and retrieval backends for the Nutrigenics.care startup platform.",
-    ],
-  },
-  {
-    role: "Framework Engineer Intern",
-    company: "Quantiphi Analytics",
-    location: "Remote",
-    period: "Feb 2024 - May 2024",
-    highlights: [
-      "Architected robust data-ingestion pipelines tailored for tracking small to medium business operations.",
-      "Developed ML-driven analytics systems to automate the extraction of actionable business insights.",
-      "Optimized and streamlined enterprise data processing workflows, reducing overall processing time by 20%.",
-    ],
-  },
-]
-
-const education = [
-  {
-    degree: "MSc Computer Vision",
-    school: "MBZUAI",
-    period: "Aug 2024 - Present",
-    gpa: "3.55 / 4.00",
-  },
-  {
-    degree: "BTech Computer Science & Engineering",
-    school: "Dr. Babasaheb Ambedkar Technological University",
-    period: "Feb 2021 - May 2024",
-    gpa: "8.51 / 10.00",
-  },
-]
+import { profile } from "@/lib/profile"
 
 export function Experience() {
   return (
@@ -64,7 +24,7 @@ export function Experience() {
           <div className="py-8 sm:py-10">
             <AnimatedSection>
               <div>
-                {experiences.map((exp, i) => (
+                {profile.experiences.map((exp, i) => (
                   <div
                     key={exp.company}
                     className="grid border-x border-t border-border bg-background lg:grid-cols-[12rem_minmax(0,1fr)]"
@@ -125,7 +85,7 @@ export function Experience() {
             </AnimatedSection>
 
             <div className="border-b border-border">
-              {education.map((edu) => (
+              {profile.education.map((edu) => (
                 <div
                   key={edu.school}
                   className="grid border-x border-t border-border bg-background md:grid-cols-[minmax(0,1fr)_11rem_8rem]"

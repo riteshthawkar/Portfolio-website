@@ -1,11 +1,5 @@
 import { AnimatedSection } from "./animated-section"
-
-const focusAreas = [
-  "Self-evolving multimodal understanding and generation from unlabeled visual data",
-  "Grounded VideoQA with budget-aware evidence acquisition",
-  "LLM and VLM evaluation for reasoning, retrieval, grounding, and generation",
-  "Applied AI systems using RAG, agents, dashboards, and domain assistants",
-]
+import { profile } from "@/lib/profile"
 
 export function ResearchFocus() {
   return (
@@ -27,13 +21,13 @@ export function ResearchFocus() {
           <div className="grid gap-0 border-b border-border sm:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             <AnimatedSection className="border-x border-t border-border bg-background px-5 py-6 sm:px-6 sm:py-8">
               <p className="text-xl leading-relaxed text-foreground sm:text-2xl">
-                My current interests center on multimodal models that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.
+                {profile.research.narrative}
               </p>
             </AnimatedSection>
 
             <AnimatedSection delay={150} className="border-x border-t border-border bg-background">
               <div className="divide-y divide-border">
-                {focusAreas.map((area, index) => (
+                {profile.research.focusAreas.map((area, index) => (
                   <div key={area} className="grid grid-cols-[3rem_minmax(0,1fr)]">
                     <span className="border-r border-border px-4 py-4 font-sans text-xs font-semibold tracking-[0.24em] text-muted-foreground">
                       {String(index + 1).padStart(2, "0")}

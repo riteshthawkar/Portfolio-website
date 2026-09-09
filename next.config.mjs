@@ -3,6 +3,7 @@ const isGithubPages = process.env.GITHUB_PAGES === 'true'
 const basePath = isGithubPages ? '/Portfolio-website' : ''
 
 const nextConfig = {
+  agentRules: false,
   output: 'export',
   trailingSlash: true,
   basePath,

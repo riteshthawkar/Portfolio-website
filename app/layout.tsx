@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
+import { profile } from '@/lib/profile'
 import './globals.css'
 
 const season = localFont({
@@ -19,12 +20,11 @@ const inter = Inter({
 import { ThemeProvider } from '@/components/theme-provider'
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
-const siteUrl = basePath ? `https://riteshthawkar.github.io${basePath}` : 'https://riteshthawkar.com'
+const siteUrl = profile.links.portfolio
 
 export const metadata: Metadata = {
-  title: 'Ritesh Thawkar | AI Researcher',
-  description:
-    'Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems. MSc Computer Vision at MBZUAI.',
+  title: `${profile.person.name} | AI Researcher`,
+  description: profile.person.summary,
   keywords: [
     'AI Researcher',
     'Machine Learning',
@@ -33,20 +33,19 @@ export const metadata: Metadata = {
     'Agentic RAG',
     'MBZUAI',
   ],
-  authors: [{ name: 'Ritesh Thawkar' }],
-  creator: 'Ritesh Thawkar',
+  authors: [{ name: profile.person.name }],
+  creator: profile.person.name,
   openGraph: {
-    title: 'Ritesh Thawkar | AI Researcher',
-    description:
-      'Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems. MSc Computer Vision at MBZUAI.',
+    title: `${profile.person.name} | AI Researcher`,
+    description: profile.person.summary,
     url: siteUrl,
-    siteName: 'Ritesh Thawkar Portfolio',
+    siteName: `${profile.person.name} Portfolio`,
     images: [
       {
         url: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&h=630&auto=format&fit=crop',
         width: 1200,
         height: 630,
-        alt: 'Ritesh Thawkar - AI Researcher',
+        alt: `${profile.person.name} - AI Researcher`,
       },
     ],
     locale: 'en_US',
@@ -54,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ritesh Thawkar | AI Researcher',
-    description: 'Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems.',
+    title: `${profile.person.name} | AI Researcher`,
+    description: profile.person.summary,
     images: ['https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&h=630&auto=format&fit=crop'],
   },
   icons: {

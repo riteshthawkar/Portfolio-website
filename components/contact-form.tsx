@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { AnimatedSection } from "./animated-section"
 import { Send } from "lucide-react"
+import { profile } from "@/lib/profile"
 
 type SubmitState = {
     status: "idle" | "success" | "error"
@@ -29,7 +30,7 @@ export function ContactForm() {
             body.append("email", formData.email)
             body.append("message", formData.message)
             body.append("subject", `Portfolio Contact from ${formData.name}`)
-            body.append("from_name", "Ritesh Thawkar Portfolio")
+            body.append("from_name", `${profile.person.name} Portfolio`)
             body.append("botcheck", formData.website)
 
             const response = await fetch(WEB3FORMS_API_URL, {
@@ -71,10 +72,10 @@ export function ContactForm() {
                             Contact
                         </p>
                         <h2 className="font-display font-semibold text-3xl tracking-tight text-foreground sm:text-4xl">
-                            Let's Connect
+                            Let&apos;s Connect
                         </h2>
                         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                            Open to research collaborations, applied AI systems work, and conversations around multimodal reasoning.
+                            {profile.research.openTo.join(" ")}
                         </p>
                     </div>
                 </AnimatedSection>

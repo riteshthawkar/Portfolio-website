@@ -3,6 +3,7 @@
 import { ChevronDown, Github, GraduationCap, Mail } from "lucide-react"
 
 import { HuggingFaceIcon } from "./hugging-face-icon"
+import { profile } from "@/lib/profile"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,22 +23,22 @@ const links = [
 const connectionLinks = [
   {
     label: "Email",
-    href: "mailto:riteshthawkar2003@gmail.com",
+    href: `mailto:${profile.person.email}`,
     icon: Mail,
   },
   {
     label: "GitHub",
-    href: "https://github.com/riteshthawkar",
+    href: profile.links.github,
     icon: Github,
   },
   {
     label: "Google Scholar",
-    href: "https://scholar.google.com/citations?hl=en&user=9-2AnjQAAAAJ",
+    href: profile.links.scholar,
     icon: GraduationCap,
   },
   {
     label: "Hugging Face",
-    href: "https://huggingface.co/Ritesh-hf",
+    href: profile.links.huggingFace,
     icon: HuggingFaceIcon,
   },
 ]
@@ -54,7 +55,7 @@ export function Nav() {
           href="#about"
           className="flex items-center border-r border-border/70 px-6 py-4 font-display text-lg font-semibold tracking-tight text-foreground transition-colors hover:text-brand"
         >
-          RT.
+          {profile.person.initials}.
         </a>
 
         <div className="hidden items-stretch md:flex">

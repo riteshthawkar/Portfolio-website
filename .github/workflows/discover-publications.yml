@@ -1,0 +1,68 @@
+name: Discover Publications
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Discover and verify publications
+        run: npm run discover:publications
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+
+      - name: Validate profile data
+        run: npm run validate:profile
+
+      - name: Regenerate CV and profile README
+        run: |
+          npm run generate:cv
+          npm run generate:readme
+
+      - name: Compile CV
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: cv/resume.tex
+
+      - name: Publish generated CV
+        run: cp cv/resume.pdf public/resume.pdf
+
+      - name: Open publication review pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: automation/publication-discovery
+          delete-branch: true
+          commit-message: "chore: discover publication updates"
+          title: "Review discovered publication updates"
+          body: |
+            This automated update compares the configured arXiv, OpenAlex,
+            Semantic Scholar, Crossref, and DBLP author records.
+
+            New publications require source agreement or an exact arXiv author
+            match. Review titles, author order, venue labels, and LinkedIn drafts
+            before merging. Merging regenerates and deploys the portfolio and CV.
+          add-paths: |
+            content/profile.json
+            cv/resume.tex
+            generated/linkedin-drafts/*.md
+            generated/profile-README.md
+            public/resume.pdf

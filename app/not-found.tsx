@@ -18,7 +18,7 @@ export default function NotFound() {
                         Page Not Found
                     </h2>
                     <p className="text-muted-foreground">
-                        It looks like this page got lost in the latent space. Let's get you back on track.
+                        It looks like this page got lost in the latent space. Let&apos;s get you back on track.
                     </p>
                     <div className="pt-4">
                         <Link
