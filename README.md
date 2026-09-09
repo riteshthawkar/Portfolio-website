@@ -5,7 +5,13 @@ The portfolio, downloadable CV, and GitHub profile README are generated from
 
 ## Updating Profile Content
 
-Edit `content/profile.json`, then run:
+Run the guided experience editor:
+
+```bash
+npm run profile:add-experience
+```
+
+For other changes, edit `content/profile.json` directly, then run:
 
 ```bash
 npm run validate:profile
@@ -16,6 +22,7 @@ npm run build:github
 
 Compile `cv/resume.tex` with `pdflatex` when updating the checked-in PDF
 locally. GitHub Actions compiles it automatically before every Pages deployment.
+See `content/README.md` for the experience record format and visibility controls.
 
 ## Publication Discovery
 

@@ -93,4 +93,4 @@ Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases, Python, TypeScript,
 
 My current interests center on multimodal models that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.
 
-<sub>Profile content last updated 2026-09-09.</sub>
+<sub>Profile content last updated 2026-09-10.</sub>

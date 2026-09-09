@@ -36,9 +36,23 @@ export interface Project {
   impact: string
   tools: string[]
   details: string
+  contribution: string
   link?: string
   linkLabel?: string
   cvFeatured: boolean
+}
+
+export interface Experience {
+  id: string
+  role: string
+  company: string
+  companyUrl?: string
+  location: string
+  startDate: string
+  endDate: string | null
+  highlights: string[]
+  includeInPortfolio: boolean
+  includeInCv: boolean
 }
 
 export interface ProfileData {
@@ -58,7 +72,6 @@ export interface ProfileData {
       url: string
     }
     summary: string
-    cvObjective: string
     hero: string[]
   }
   links: Record<"portfolio" | "scholar" | "huggingFace" | "linkedin" | "github", string>
@@ -92,13 +105,7 @@ export interface ProfileData {
     url: string
   }>
   projects: Project[]
-  experiences: Array<{
-    role: string
-    company: string
-    location: string
-    period: string
-    highlights: string[]
-  }>
+  experiences: Experience[]
   education: Array<{
     degree: string
     school: string
@@ -109,3 +116,21 @@ export interface ProfileData {
 }
 
 export const profile = profileData as ProfileData
+
+function formatProfileMonth(value: string) {
+  const [year, month] = value.split("-").map(Number)
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(year, month - 1, 1)))
+}
+
+export function formatExperiencePeriod(experience: Experience) {
+  const end = experience.endDate
+    ? formatProfileMonth(experience.endDate)
+    : "Present"
+
+  return `${formatProfileMonth(experience.startDate)} - ${end}`
+}

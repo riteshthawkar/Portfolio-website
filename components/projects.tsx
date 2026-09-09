@@ -106,6 +106,14 @@ export function Projects() {
                         <p className="whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground">
                           {project.details.split(". ").join(".\n\n")}
                         </p>
+                        <div className="mt-6 border-l border-brand bg-muted/30 px-4 py-3">
+                          <h4 className="text-sm font-semibold text-foreground">
+                            My Contribution
+                          </h4>
+                          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                            {project.contribution}
+                          </p>
+                        </div>
                         <div className="mt-6">
                           <h4 className="mb-3 font-medium text-foreground">Technologies</h4>
                           <div className="flex flex-wrap gap-2">

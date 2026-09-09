@@ -66,6 +66,23 @@ function educationDegree(item) {
   return item.degree
 }
 
+function formatProfileMonth(value) {
+  const [year, month] = value.split("-").map(Number)
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(Date.UTC(year, month - 1, 1)))
+}
+
+function experiencePeriod(item) {
+  return [
+    formatProfileMonth(item.startDate),
+    item.endDate ? formatProfileMonth(item.endDate) : "Present",
+  ].join(" - ")
+}
+
 const education = profile.education
   .map((item) =>
     [
@@ -80,14 +97,6 @@ const education = profile.education
   )
   .join("\n")
 
-const publicationCounters = { C: 0, S: 0 }
-
-function publicationLabel(publication) {
-  const prefix = publication.type.toLowerCase().includes("conference") ? "C" : "S"
-  publicationCounters[prefix] += 1
-  return "[" + prefix + "." + publicationCounters[prefix] + "]"
-}
-
 function publicationVenue(publication) {
   if (/^arXiv\b/i.test(publication.tag)) {
     return "\\textit{arXiv preprint}."
@@ -101,16 +110,15 @@ function publicationVenue(publication) {
   return "In \\textit{" + latex(publication.tag) + "}."
 }
 
-const publications = profile.publications
-  .filter((publication) => publication.includeInCv)
-  .map((publication) => {
+function publicationEntries(items) {
+  return items.map((publication, index) => {
     const title = rawLink(
       publication.link,
       "\\textbf{" + latex(sentence(publication.title)) + "}",
     )
     return [
       "  \\par\\Needspace{5\\baselineskip}",
-      "  \\item[\\textbf{" + latex(publicationLabel(publication)) + "}]",
+      "  \\item[\\textbf{[" + (index + 1) + "]}]",
       "    " +
         emphasizeAuthorName(publication.authors) +
         " (" +
@@ -120,8 +128,33 @@ const publications = profile.publications
         " " +
         publicationVenue(publication),
     ].join("\n")
-  })
-  .join("\n")
+  }).join("\n")
+}
+
+const includedPublications = profile.publications
+  .filter((publication) => publication.includeInCv)
+  .toSorted((a, b) => b.sortDate.localeCompare(a.sortDate))
+const peerReviewedPublications = includedPublications.filter(
+  (publication) => !/^arXiv\b/i.test(publication.tag),
+)
+const preprintPublications = includedPublications.filter(
+  (publication) => /^arXiv\b/i.test(publication.tag),
+)
+
+function publicationGroup(title, items) {
+  return [
+    "\\Needspace{8\\baselineskip}",
+    "{\\large\\bfseries " + latex(title) + "}\\par",
+    "\\begin{description}",
+    publicationEntries(items),
+    "\\end{description}",
+  ].join("\n")
+}
+
+const publications = [
+  publicationGroup("Peer-Reviewed Publications", peerReviewedPublications),
+  publicationGroup("Preprints", preprintPublications),
+].join("\n\n")
 
 function projectLink(project) {
   if (!project.link) {
@@ -134,6 +167,7 @@ const projects = profile.projects
   .filter((project) => project.cvFeatured)
   .map((project) =>
     [
+      "  \\par\\Needspace{11\\baselineskip}",
       "  \\item \\textbf{" + latex(project.title) + ":}" + projectLink(project),
       "  \\textit{Tools: [" + latex(project.tools.join(", ")) + "]}",
       "  \\begin{itemize}",
@@ -146,11 +180,13 @@ const projects = profile.projects
   .join("\n")
 
 const experiences = profile.experiences
+  .filter((item) => item.includeInCv)
+  .toSorted((a, b) => b.startDate.localeCompare(a.startDate))
   .map((item) =>
     [
       "  \\par\\Needspace{12\\baselineskip}",
       "  \\item \\begin{tabular*}{\\linewidth}[t]{@{\\extracolsep{\\fill}}lr}",
-      "    \\textbf{" + latex(item.company) + "} & \\textit{" + latex(item.period) + "} \\\\",
+      "    \\textbf{" + latex(item.company) + "} & \\textit{" + latex(experiencePeriod(item)) + "} \\\\",
       "    \\textit{" + latex(item.role) + "} & " + latex(item.location),
       "  \\end{tabular*}",
       "  \\begin{itemize}",
@@ -215,28 +251,26 @@ const document = [
   "\\end{center}",
   "\\vspace{-0.45em}",
   "",
-  "\\section*{Objective}",
-  latex(profile.person.cvObjective),
+  "\\section*{Research Profile}",
+  latex(profile.person.summary),
   "",
   "\\section*{Education}",
   "\\begin{itemize}",
   education,
   "\\end{itemize}",
   "",
-  "\\section*{Selected Publications \\hfill \\textcolor{linkblue}{\\normalfont\\small\\scshape C=Conference, J=Journal, P=Patent, S=In Submission, T=Thesis}}",
-  "\\begin{description}",
+  "\\section*{Publications}",
   publications,
-  "\\end{description}",
-  "",
-  "\\section*{Selected Projects}",
-  "\\begin{itemize}",
-  projects,
-  "\\end{itemize}",
   "",
   "\\Needspace{14\\baselineskip}",
   "\\section*{Experience}",
   "\\begin{itemize}",
   experiences,
+  "\\end{itemize}",
+  "",
+  "\\section*{Selected Projects}",
+  "\\begin{itemize}",
+  projects,
   "\\end{itemize}",
   "",
   "\\section*{Skills}",

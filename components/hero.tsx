@@ -6,23 +6,37 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 const [institutionPrefix, institutionSuffix] = profile.person.hero[1].split(
   profile.person.institution.shortName,
 )
+const visiblePublications = profile.publications.filter(
+  (publication) => publication.includeInProfile,
+)
+const firstAuthorPublications = visiblePublications.filter(
+  (publication) => publication.authors.split(",")[0]?.trim() === profile.person.name,
+)
+const heroMetrics = [
+  { value: visiblePublications.length, label: "Publications" },
+  { value: firstAuthorPublications.length, label: "First-author work" },
+  {
+    value: profile.projects.filter((project) => project.cvFeatured).length,
+    label: "Featured systems",
+  },
+]
 
 export function Hero() {
   return (
-    <section id="about" className="relative px-6 pt-14 pb-0 sm:pt-14">
+    <section id="about" className="relative px-6 pb-0 pt-10 sm:pt-14">
       <GridBackground />
-      <div className="mx-auto max-w-5xl border-x border-t border-border bg-background px-6 py-10 relative z-10 sm:px-10 sm:py-14">
+      <div className="relative z-10 mx-auto max-w-5xl border-x border-t border-border bg-background px-5 py-8 sm:px-10 sm:py-14">
         <div>
           <div
             className="translate-y-0 opacity-100 transition-all duration-1000 ease-out"
           >
-            <h1 className="font-display font-semibold text-5xl tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="font-display text-5xl font-semibold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl">
               {profile.person.name}
             </h1>
           </div>
 
           <div
-            className="mt-6 flex translate-y-0 flex-wrap items-center justify-between gap-4 opacity-100 transition-all delay-200 duration-1000 ease-out"
+            className="mt-4 flex translate-y-0 flex-wrap items-center justify-between gap-3 opacity-100 transition-all delay-200 duration-1000 ease-out sm:mt-6 sm:gap-4"
           >
             <p className="text-base font-medium text-muted-foreground sm:text-lg">
               {profile.person.headline}
@@ -34,12 +48,12 @@ export function Hero() {
           </div>
 
           <div
-            className="mt-12 max-w-3xl translate-y-0 space-y-6 opacity-100 transition-all delay-400 duration-1000 ease-out"
+            className="mt-7 max-w-3xl translate-y-0 space-y-4 opacity-100 transition-all delay-400 duration-1000 ease-out sm:mt-12 sm:space-y-6"
           >
-            <p className="text-xl leading-relaxed text-foreground sm:text-2xl">
+            <p className="text-lg leading-relaxed text-foreground sm:text-2xl">
               {profile.person.hero[0]}
             </p>
-            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="text-sm leading-relaxed text-muted-foreground sm:text-lg">
               {institutionPrefix}
               <a
                 href={profile.person.institution.url}
@@ -51,11 +65,11 @@ export function Hero() {
               </a>
               {institutionSuffix}
             </p>
-            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
+            <p className="hidden text-base leading-relaxed text-muted-foreground sm:block sm:text-lg">
               {profile.person.hero[2]}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2 pb-4">
+            <div className="flex flex-wrap items-center gap-3 pb-1 pt-1 sm:pb-4 sm:pt-2">
               <a
                 href={`${basePath}/resume.pdf`}
                 target="_blank"
@@ -72,9 +86,26 @@ export function Hero() {
                 View Research
               </a>
             </div>
+
+            <dl className="grid grid-cols-3 border border-border bg-background">
+              {heroMetrics.map((metric, index) => (
+                <div
+                  key={metric.label}
+                  className={`min-w-0 px-3 py-3 sm:px-5 sm:py-4 ${
+                    index > 0 ? "border-l border-border" : ""
+                  }`}
+                >
+                  <dt className="text-[10px] font-medium uppercase text-muted-foreground sm:text-xs">
+                    {metric.label}
+                  </dt>
+                  <dd className="mt-1 font-display text-xl font-semibold text-foreground sm:text-2xl">
+                    {metric.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
-
       </div>
     </section>
   )

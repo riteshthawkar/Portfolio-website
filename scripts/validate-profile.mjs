@@ -3,9 +3,10 @@ import { z } from "zod"
 
 const url = z.string().url()
 const nullableId = z.string().min(1).nullable()
+const month = z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/)
 
 const profileSchema = z.object({
-  schemaVersion: z.literal(1),
+  schemaVersion: z.literal(2),
   lastUpdated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   person: z.object({
     name: z.string().min(2),
@@ -21,7 +22,6 @@ const profileSchema = z.object({
       url,
     }),
     summary: z.string().min(40),
-    cvObjective: z.string().min(60),
     hero: z.array(z.string().min(20)).length(3),
   }),
   links: z.object({
@@ -101,19 +101,31 @@ const profileSchema = z.object({
       impact: z.string().min(2),
       tools: z.array(z.string().min(1)).min(1),
       details: z.string().min(20),
+      contribution: z.string().min(20),
       link: url.optional(),
       linkLabel: z.string().optional(),
       cvFeatured: z.boolean(),
     }),
   ).min(1),
   experiences: z.array(
-    z.object({
-      role: z.string().min(2),
-      company: z.string().min(2),
-      location: z.string().min(2),
-      period: z.string().min(4),
-      highlights: z.array(z.string().min(10)).min(1),
-    }),
+    z
+      .object({
+        id: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+        role: z.string().min(2),
+        company: z.string().min(2),
+        companyUrl: url.optional(),
+        location: z.string().min(2),
+        startDate: month,
+        endDate: month.nullable(),
+        highlights: z.array(z.string().min(10)).min(1),
+        includeInPortfolio: z.boolean(),
+        includeInCv: z.boolean(),
+      })
+      .refine(
+        (experience) =>
+          experience.endDate === null || experience.endDate >= experience.startDate,
+        { message: "endDate must not be earlier than startDate", path: ["endDate"] },
+      ),
   ).min(1),
   education: z.array(
     z.object({
@@ -142,6 +154,10 @@ if (!unique(profile.publications.map((publication) => publication.title.toLowerC
 
 if (!unique(profile.projects.map((project) => project.title.toLowerCase()))) {
   throw new Error("Project titles must be unique")
+}
+
+if (!unique(profile.experiences.map((experience) => experience.id))) {
+  throw new Error("Experience IDs must be unique")
 }
 
 if (!unique(profile.pinnedRepositories.map((repository) => repository.name.toLowerCase()))) {

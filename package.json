@@ -9,6 +9,7 @@
     "discover:publications": "node scripts/discover-publications.mjs",
     "generate:cv": "node scripts/generate-cv.mjs",
     "generate:readme": "node scripts/generate-profile-readme.mjs",
+    "profile:add-experience": "node scripts/add-experience.mjs",
     "validate:profile": "node scripts/validate-profile.mjs",
     "start": "next start",
     "lint": "eslint ."

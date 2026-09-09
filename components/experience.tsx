@@ -1,9 +1,13 @@
 "use client"
 
 import { AnimatedSection } from "./animated-section"
-import { profile } from "@/lib/profile"
+import { formatExperiencePeriod, profile } from "@/lib/profile"
 
 export function Experience() {
+  const experiences = profile.experiences
+    .filter((experience) => experience.includeInPortfolio)
+    .toSorted((a, b) => b.startDate.localeCompare(a.startDate))
+
   return (
     <section id="experience" className="px-6 py-0 relative">
       <div className="mx-auto max-w-5xl overflow-hidden border-x border-t border-border bg-background relative z-10">
@@ -24,9 +28,9 @@ export function Experience() {
           <div className="py-8 sm:py-10">
             <AnimatedSection>
               <div>
-                {profile.experiences.map((exp, i) => (
+                {experiences.map((exp, i) => (
                   <div
-                    key={exp.company}
+                    key={exp.id}
                     className="grid border-x border-t border-border bg-background lg:grid-cols-[12rem_minmax(0,1fr)]"
                   >
                     <div className="border-b border-border px-5 py-5 lg:border-b-0 lg:border-r lg:px-6 lg:py-6">
@@ -34,7 +38,7 @@ export function Experience() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <p className="text-sm font-semibold leading-relaxed text-foreground">
-                        {exp.period}
+                        {formatExperiencePeriod(exp)}
                       </p>
                       <p className="mt-2 text-sm text-muted-foreground">
                         {exp.location}
@@ -46,9 +50,20 @@ export function Experience() {
                         <h3 className="text-xl font-semibold tracking-tight text-foreground">
                           {exp.role}
                         </h3>
-                        <p className="mt-2 text-sm font-medium text-brand">
-                          {exp.company}
-                        </p>
+                        {exp.companyUrl ? (
+                          <a
+                            href={exp.companyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-2 inline-block text-sm font-medium text-brand underline decoration-transparent underline-offset-4 transition-colors hover:decoration-brand"
+                          >
+                            {exp.company}
+                          </a>
+                        ) : (
+                          <p className="mt-2 text-sm font-medium text-brand">
+                            {exp.company}
+                          </p>
+                        )}
                       </div>
 
                       <ul className="border-t border-border">

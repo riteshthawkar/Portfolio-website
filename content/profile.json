@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "lastUpdated": "2026-09-09",
+  "schemaVersion": 2,
+  "lastUpdated": "2026-09-10",
   "person": {
     "name": "Ritesh Thawkar",
     "initials": "RT",
@@ -15,7 +15,6 @@
       "url": "https://mbzuai.ac.ae"
     },
     "summary": "Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models.",
-    "cvObjective": "Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models. I am eager to contribute to collaborative teams pushing state-of-the-art multimodal AI.",
     "hero": [
       "I build multimodal AI systems that move between research prototypes and production-scale agentic applications.",
       "Currently pursuing an MSc in Computer Vision at MBZUAI, where I work on VLM reasoning, self-evolving LMMs, and retrieval-backed AI agents.",
@@ -722,6 +721,7 @@
         "FastAPI"
       ],
       "details": "Built an LLM-driven agentic pipeline that resolves MBZUAI website queries using retrieval, tool-use, and response verification. Deployed the system in production, serving thousands of users and iterating prompts, tools, and routing based on real traffic. Developed an interaction analytics dashboard to track user intents, content gaps, and unresolved queries for continuous Agentic RAG tuning.",
+      "contribution": "Designed and implemented the retrieval, tool-use, response-verification, and analytics pipeline, then iterated it using production traffic.",
       "cvFeatured": true
     },
     {
@@ -737,6 +737,7 @@
         "FastAPI"
       ],
       "details": "Built a platform for creating customizable LLM-powered agentic chatbots with configurable tools, tone, and knowledge sources. Implemented ingestion and indexing pipelines for website and document sources to enable fast, accurate LLM responses. Added analytics and evaluation hooks to measure resolution rates, user satisfaction, and retrieval quality for LLM improvements.",
+      "contribution": "Built the configurable agent workflows, knowledge-ingestion pipelines, and evaluation hooks used to tune retrieval quality and assistant behavior.",
       "cvFeatured": true
     },
     {
@@ -754,6 +755,7 @@
       "link": "https://lawa.ai",
       "linkLabel": "Visit Lawa.ai",
       "details": "Designed and developed LLM-powered web assistants to improve user interaction and engagement for websites. Implemented a document retrieval system using vector databases to ground LLM responses and improve query resolution accuracy. Developed backend workflows and API integration using FastAPI and websockets for scalable deployment.",
+      "contribution": "Developed the retrieval layer, FastAPI and websocket workflows, and assistant integrations that support scalable customer deployments.",
       "cvFeatured": true
     },
     {
@@ -770,6 +772,7 @@
       "link": "https://nutrigenics.care",
       "linkLabel": "Visit Nutrigenics.care",
       "details": "Designed and developed the platform's web infrastructure to manage user and recipe data efficiently, enhancing scalability and usability. Integrated NutritionGPT to power LLM-based recipe recommendations from image inputs and user preferences. Implemented a personalized recommendation system leveraging LLMs to tailor nutrition and recipe suggestions to individual needs. Optimized backend workflows using Django and PostgreSQL to ensure efficient data handling and faster response times.",
+      "contribution": "Built the Django and PostgreSQL backend, integrated image-aware NutritionGPT workflows, and implemented personalized recommendation logic.",
       "cvFeatured": true
     },
     {
@@ -786,6 +789,7 @@
       "link": "https://github.com/riteshthawkar/adaptive-evidence-grounded-videoqa",
       "linkLabel": "View Code",
       "details": "Built an experimental pipeline for adaptive evidence acquisition in grounded VideoQA. The project focuses on selecting reliable visual evidence under budget constraints, evaluating Qwen2.5-VL behavior, and analyzing grounding performance on NExT-GQA-style tasks.",
+      "contribution": "Designed the budget-aware evidence-selection pipeline and evaluation workflow for grounded VideoQA experiments.",
       "cvFeatured": false
     },
     {
@@ -802,6 +806,7 @@
       "link": "https://github.com/riteshthawkar/leaderboard",
       "linkLabel": "View Code",
       "details": "Developed leaderboard tooling for visual intelligence experiments, making it easier to compare model runs, organize benchmark outputs, and present evaluation results in a structured interface.",
+      "contribution": "Developed the benchmark result model and leaderboard interface for consistent experiment comparison.",
       "cvFeatured": false
     },
     {
@@ -818,6 +823,7 @@
       "link": "https://github.com/riteshthawkar/BookRAG",
       "linkLabel": "View Code",
       "details": "Built a document-focused RAG workspace for ingesting books and documents, retrieving relevant passages, and supporting grounded question answering over longer-form knowledge sources.",
+      "contribution": "Implemented document ingestion, passage retrieval, and grounded question-answering workflows for long-form sources.",
       "cvFeatured": false
     },
     {
@@ -834,32 +840,43 @@
       "link": "https://github.com/riteshthawkar/financegpt",
       "linkLabel": "View Code",
       "details": "Built a finance assistant that combines conversational interfaces with stock data and market tools. The backend uses FastAPI and LangChain-style orchestration to answer finance questions with external tool context.",
+      "contribution": "Built the FastAPI backend and tool-orchestration workflow that grounds conversations in external market data.",
       "cvFeatured": false
     }
   ],
   "experiences": [
     {
+      "id": "mbzuai-research-assistant",
       "role": "Research Assistant",
       "company": "Mohamed Bin Zayed University of Artificial Intelligence",
+      "companyUrl": "https://mbzuai.ac.ae",
       "location": "Abu Dhabi, UAE",
-      "period": "Sep 2024 - Present",
+      "startDate": "2024-09",
+      "endDate": null,
       "highlights": [
         "Developing Novel Visual Reasoning Benchmarks to stress-test the sequential logic capabilities of VLLMs.",
         "Pioneering Composed Video Retrieval techniques utilizing dense video descriptions for fine-grained understanding.",
         "Engineered core document retrieval systems and scalable web agents powering the enterprise Lawa.AI platform.",
         "Built and optimized the AI infrastructure and retrieval backends for the Nutrigenics.care startup platform."
-      ]
+      ],
+      "includeInPortfolio": true,
+      "includeInCv": true
     },
     {
+      "id": "quantiphi-framework-engineer-intern",
       "role": "Framework Engineer Intern",
       "company": "Quantiphi Analytics",
+      "companyUrl": "https://quantiphi.com",
       "location": "Remote",
-      "period": "Feb 2024 - May 2024",
+      "startDate": "2024-02",
+      "endDate": "2024-05",
       "highlights": [
         "Architected robust data-ingestion pipelines tailored for tracking small to medium business operations.",
         "Developed ML-driven analytics systems to automate the extraction of actionable business insights.",
         "Optimized and streamlined enterprise data processing workflows, reducing overall processing time by 20%."
-      ]
+      ],
+      "includeInPortfolio": true,
+      "includeInCv": true
     }
   ],
   "education": [
