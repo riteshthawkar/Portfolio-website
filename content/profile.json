@@ -15,6 +15,7 @@
       "url": "https://mbzuai.ac.ae"
     },
     "summary": "Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models.",
+    "cvObjective": "Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models. I am eager to contribute to collaborative teams pushing state-of-the-art multimodal AI.",
     "hero": [
       "I build multimodal AI systems that move between research prototypes and production-scale agentic applications.",
       "Currently pursuing an MSc in Computer Vision at MBZUAI, where I work on VLM reasoning, self-evolving LMMs, and retrieval-backed AI agents.",
@@ -34,6 +35,19 @@
     "openAlexAuthorId": "A5115860474",
     "semanticScholarAuthorId": "2339668248",
     "dblpPid": "397/3521"
+  },
+  "cv": {
+    "publicationLimit": 7,
+    "languages": [
+      "English (Intermediate)",
+      "Hindi (Advanced)",
+      "Marathi (Advanced)"
+    ],
+    "interests": [
+      "Reading",
+      "Music",
+      "Sports (Cricket, Badminton)"
+    ]
   },
   "research": {
     "narrative": "My current interests center on multimodal models that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.",
@@ -853,12 +867,14 @@
     {
       "degree": "MSc Computer Vision",
       "school": "MBZUAI",
+      "location": "Abu Dhabi, UAE",
       "period": "Aug 2024 - Present",
       "gpa": "3.55 / 4.00"
     },
     {
       "degree": "BTech Computer Science & Engineering",
       "school": "Dr. Babasaheb Ambedkar Technological University",
+      "location": "Lonere, India",
       "period": "Feb 2021 - May 2024",
       "gpa": "8.51 / 10.00"
     }

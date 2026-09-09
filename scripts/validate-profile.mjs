@@ -21,6 +21,7 @@ const profileSchema = z.object({
       url,
     }),
     summary: z.string().min(40),
+    cvObjective: z.string().min(60),
     hero: z.array(z.string().min(20)).length(3),
   }),
   links: z.object({
@@ -36,6 +37,11 @@ const profileSchema = z.object({
     openAlexAuthorId: z.string().regex(/^A\d+$/),
     semanticScholarAuthorId: z.string().min(1),
     dblpPid: z.string().min(3),
+  }),
+  cv: z.object({
+    publicationLimit: z.number().int().positive(),
+    languages: z.array(z.string().min(2)).min(1),
+    interests: z.array(z.string().min(2)).min(1),
   }),
   research: z.object({
     narrative: z.string().min(40),
@@ -114,6 +120,7 @@ const profileSchema = z.object({
     z.object({
       degree: z.string().min(2),
       school: z.string().min(2),
+      location: z.string().min(2),
       period: z.string().min(4),
       gpa: z.string().min(2),
     }),

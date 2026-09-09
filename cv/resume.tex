@@ -1,7 +1,9 @@
-\documentclass[10pt,a4paper]{article}
-\usepackage[margin=0.58in]{geometry}
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=0.56in,right=0.56in,top=0.32in,bottom=0.28in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{fontawesome5}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
@@ -9,97 +11,136 @@
 \usepackage{titlesec}
 \usepackage{microtype}
 
-\definecolor{accent}{HTML}{0B7285}
-\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent}
+\definecolor{linkblue}{HTML}{000099}
+\hypersetup{colorlinks=true,urlcolor=linkblue,linkcolor=linkblue}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{2pt}
-\setlist[itemize]{leftmargin=1.2em,itemsep=1pt,topsep=2pt}
-\setlist[description]{leftmargin=0pt,labelsep=0.6em,itemsep=4pt,topsep=2pt}
-\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{-3pt}\rule{\linewidth}{0.35pt}]
-\titlespacing*{\section}{0pt}{8pt}{4pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\emergencystretch}{1em}
+\raggedbottom
+\setlist[itemize,1]{label=\textbullet,leftmargin=0.8em,labelsep=0.35em,itemsep=0.55em,topsep=0.25em,parsep=0pt,partopsep=0pt}
+\setlist[itemize,2]{label=\textopenbullet,leftmargin=1.15em,labelsep=0.35em,itemsep=0.28em,topsep=0.18em,parsep=0pt,partopsep=0pt}
+\setlist[description]{leftmargin=3.85em,labelwidth=3.2em,labelsep=0.5em,itemsep=0.55em,topsep=0.2em,parsep=0pt,partopsep=0pt}
+\titleformat{\section}{\Large\bfseries\scshape}{}{0pt}{}[\vspace{0.05em}\titlerule]
+\titlespacing*{\section}{0pt}{0.7em}{0.45em}
 
 \begin{document}
 
 \begin{center}
-  {\LARGE\bfseries Ritesh Thawkar}\\[4pt]
-  AI Researcher \textperiodcentered{} Computer Vision \textperiodcentered{} Multimodal Systems\\[4pt]
-  Abu Dhabi, UAE \enspace | \enspace \href{mailto:riteshthawkar2003@gmail.com}{riteshthawkar2003@gmail.com} \enspace | \enspace +91 9552361592\\[3pt]
-  \href{https://github.com/riteshthawkar}{GitHub} \enspace | \enspace \href{https://scholar.google.com/citations?hl=en\&user=9-2AnjQAAAAJ}{Google Scholar} \enspace | \enspace \href{https://huggingface.co/Ritesh-hf}{Hugging Face} \enspace | \enspace \href{https://www.linkedin.com/in/ritesh-thawkar-b13192233/}{LinkedIn} \enspace | \enspace \href{https://riteshthawkar.github.io/Portfolio-website/}{Portfolio}
+  {\Huge\bfseries Ritesh Thawkar}\\[2pt]
+  +91 9552361592 \enspace | \enspace \href{mailto:riteshthawkar2003@gmail.com}{riteshthawkar2003@gmail.com}\\[3pt]
+  \href{https://www.linkedin.com/in/ritesh-thawkar-b13192233/}{\faLinkedin\ Ritesh Thawkar} \enspace | \enspace \href{https://github.com/riteshthawkar}{\faGithub\ Ritesh Thawkar} \enspace | \enspace \href{https://scholar.google.com/citations?hl=en\&user=9-2AnjQAAAAJ}{\faGraduationCap\ Google Scholar} \enspace | \enspace \href{https://huggingface.co/Ritesh-hf}{\faRobot\ Hugging Face}
 \end{center}
+\vspace{-0.45em}
 
-\section*{Profile}
-Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models.
+\section*{Objective}
+Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models. I am eager to contribute to collaborative teams pushing state-of-the-art multimodal AI.
 
 \section*{Education}
-\begin{tabularx}{\linewidth}{@{}X r@{}}
-\textbf{MSc Computer Vision} & Aug 2024 - Present \\
-MBZUAI & \textbf{GPA: 3.55 / 4.00} \\[3pt]
-\textbf{BTech Computer Science \& Engineering} & Feb 2021 - May 2024 \\
-Dr. Babasaheb Ambedkar Technological University & \textbf{GPA: 8.51 / 10.00} \\[3pt]
-\end{tabularx}
-
-\section*{Experience}
-\textbf{Research Assistant} \hfill Sep 2024 - Present \\
-\textit{Mohamed Bin Zayed University of Artificial Intelligence} \hfill Abu Dhabi, UAE
 \begin{itemize}
-  \item Developing Novel Visual Reasoning Benchmarks to stress-test the sequential logic capabilities of VLLMs.
-  \item Pioneering Composed Video Retrieval techniques utilizing dense video descriptions for fine-grained understanding.
-  \item Engineered core document retrieval systems and scalable web agents powering the enterprise Lawa.AI platform.
-  \item Built and optimized the AI infrastructure and retrieval backends for the Nutrigenics.care startup platform.
-\end{itemize}
-\textbf{Framework Engineer Intern} \hfill Feb 2024 - May 2024 \\
-\textit{Quantiphi Analytics} \hfill Remote
-\begin{itemize}
-  \item Architected robust data-ingestion pipelines tailored for tracking small to medium business operations.
-  \item Developed ML-driven analytics systems to automate the extraction of actionable business insights.
-  \item Optimized and streamlined enterprise data processing workflows, reducing overall processing time by 20\%.
+  \item \begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lr}
+    \textbf{Mohamed Bin Zayed University of Artificial Intelligence} & \textit{Aug 2024 - Present} \\
+    \textit{Master of Science in Computer Vision} & Abu Dhabi, UAE
+  \end{tabular*}
+  \begin{itemize}
+    \item GPA: 3.55/4.00
+  \end{itemize}
+  \item \begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lr}
+    \textbf{Dr. Babasaheb Ambedkar Technological University} & \textit{Feb 2021 - May 2024} \\
+    \textit{Bachelor of Technology in Computer Science and Engineering} & Lonere, India
+  \end{tabular*}
+  \begin{itemize}
+    \item GPA: 8.51/10.00
+  \end{itemize}
 \end{itemize}
 
-\section*{Publications}
+\section*{Selected Publications \hfill \textcolor{linkblue}{\normalfont\small\scshape C=Conference, J=Journal, P=Patent, S=In Submission, T=Thesis}}
 \begin{description}
-\item[\textbf{arXiv 2026}] \textbf{How Good are Foundation Models in Longitudinal MRI Disease Progression Reasoning?} Wafa Al Ghallabi, \textbf{Ritesh Thawkar}, Sara Ghaboura, Omkar Thawakar, Numan Saeed, Dana Al Nuaimi, Ajnas Alkatheeri, Salman Khan, Fahad Shahbaz Khan. \href{https://arxiv.org/abs/2608.13309}{View Preprint}.
-\item[\textbf{arXiv 2026}] \textbf{Perception Before Supervision: Self-Contained Visual Distillation from Counterfactual Blind Spots.} Shravan Venkatraman, Omkar Thawakar, \textbf{Ritesh Thawkar}, Abdelrahman Shaker, Rao Muhammad Anwer. \href{https://arxiv.org/abs/2608.09931}{View Preprint}.
-\item[\textbf{arXiv 2026}] \textbf{Ask, Solve, Generate: Self-Evolving Unified Multimodal Understanding and Generation via Self-Consistency Rewards.} \textbf{Ritesh Thawkar}, Shravan Venkatraman, Omkar Thawakar, Abdelrahman Shaker, Fahad Khan, Hisham Cholakkal, Salman Khan, Rao Muhammad Anwer. \href{https://arxiv.org/abs/2606.27376}{View Preprint}.
-\item[\textbf{arXiv 2026}] \textbf{Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models.} Shravan Venkatraman, \textbf{Ritesh Thawkar}, Omkar Thawakar, Rao Muhammad Anwer, Hisham Cholakkal, Salman Khan, Fahad Khan. \href{https://arxiv.org/abs/2606.27373}{View Preprint}.
-\item[\textbf{WACV 2026}] \textbf{A Multi-Agent Diffusion Approach for MRI Anomaly Segmentation via Modality-Specific LoRA Specialization.} Wafa Al Ghallabi, Muhammad Zaigham Zaheer, \textbf{Ritesh Thawkar}, Omkar Thawakar, Salman Khan, Fahad Shahbaz Khan. \href{https://doi.org/10.1109/wacv61042.2026.00021}{View Paper}.
-\item[\textbf{arXiv 2026}] \textbf{Mobile-O: Unified Multimodal Understanding and Generation on Mobile Device.} Abdelrahman Shaker, Ahmed Heakl, Jaseel Muhammad, \textbf{Ritesh Thawkar}, Omkar Thawakar, Senmao Li, Hisham Cholakkal, Ian Reid, Eric P. Xing, Salman Khan, Fahad Shahbaz Khan. \href{https://arxiv.org/abs/2602.20161}{View Preprint}.
-\item[\textbf{arXiv 2025}] \textbf{EvoLMM: Self-Evolving Large Multimodal Models with Continuous Rewards.} Omkar Thawakar, Shravan Venkatraman, \textbf{Ritesh Thawkar}, Abdelrahman Shaker, Hisham Cholakkal, Rao Muhammad Anwer, Salman Khan, Fahad Khan. \href{https://arxiv.org/abs/2511.16672}{View Preprint}.
-\item[\textbf{arXiv 2025}] \textbf{How Good are Foundation Models in Step-by-Step Embodied Reasoning?} Dinura Dissanayake, Ahmed Heakl, Omkar Thawakar, Noor Ahsan, \textbf{Ritesh Thawkar}, Ketan More, Jean Lahoud, Rao Anwer, Hisham Cholakkal, Ivan Laptev, Fahad Shahbaz Khan, Salman Khan. \href{https://arxiv.org/abs/2509.15293}{View Preprint}.
-\item[\textbf{ICCV 2025}] \textbf{Beyond Simple Edits: Composed Video Retrieval with Dense Modifications.} Omkar Thawakar, Dmitry Demidov, \textbf{Ritesh Thawkar}, Rao Muhammad Anwer, Mubarak Shah, Fahad Shahbaz Khan, Salman Khan. \href{https://arxiv.org/abs/2508.14039}{View Paper}.
-\item[\textbf{EMNLP 2025}] \textbf{Fann or Flop: A Multigenre, Multiera Benchmark for Arabic Poetry Understanding in LLMs.} Wafa Al Ghallabi, \textbf{Ritesh Thawkar}, Sara Ghaboura, Ketan Pravin More, Omkar Thawakar, Hisham Cholakkal, Salman Khan, Rao Muhammad Anwer. \href{https://arxiv.org/abs/2505.18152}{View Paper}.
-\item[\textbf{arXiv 2025}] \textbf{DriveLMM-o1: A Step-by-Step Reasoning Dataset and Large Multimodal Model for Driving Scenario Understanding.} Ayesha Ishaq, Jean Lahoud, Ketan More, Omkar Thawakar, \textbf{Ritesh Thawkar}, Dinura Dissanayake, Noor Ahsan, Yuhao Li, Fahad Shahbaz Khan, Hisham Cholakkal, Ivan Laptev, Rao Muhammad Anwer, Salman Khan. \href{https://arxiv.org/abs/2503.10621}{View Preprint}.
-\item[\textbf{ACL Findings 2025}] \textbf{Time Travel: A Comprehensive Benchmark to Evaluate LMMs on Historical and Cultural Artifacts.} Sara Ghaboura, Ketan Pravin More, \textbf{Ritesh Thawkar}, Wafa Al Ghallabi, Omkar Thawakar, Fahad Shahbaz Khan, Hisham Cholakkal, Salman Khan, Rao Muhammad Anwer. \href{https://aclanthology.org/2025.findings-acl.1211/}{View Paper}.
-\item[\textbf{ACL Findings 2025}] \textbf{LlamaV-o1: Rethinking Step-by-step Visual Reasoning in LLMs.} Omkar Thawakar, Dinura Dissanayake, Ketan Pravin More, \textbf{Ritesh Thawkar}, et al. \href{https://aclanthology.org/2025.findings-acl.1247/}{View Paper}.
+  \item[\textbf{[S.1]}]
+    Wafa Al Ghallabi, Ritesh Thawkar, Sara Ghaboura, Omkar Thawakar, Numan Saeed, Dana Al Nuaimi, Ajnas Alkatheeri, Salman Khan, Fahad Shahbaz Khan. (2026). \href{https://arxiv.org/abs/2608.13309}{\textbf{How Good are Foundation Models in Longitudinal MRI Disease Progression Reasoning?}} \textit{arXiv preprint}.
+  \item[\textbf{[S.2]}]
+    Shravan Venkatraman, Omkar Thawakar, Ritesh Thawkar, Abdelrahman Shaker, Rao Muhammad Anwer. (2026). \href{https://arxiv.org/abs/2608.09931}{\textbf{Perception Before Supervision: Self-Contained Visual Distillation from Counterfactual Blind Spots.}} \textit{arXiv preprint}.
+  \item[\textbf{[S.3]}]
+    Ritesh Thawkar, Shravan Venkatraman, Omkar Thawakar, Abdelrahman Shaker, Fahad Khan, Hisham Cholakkal, Salman Khan, Rao Muhammad Anwer. (2026). \href{https://arxiv.org/abs/2606.27376}{\textbf{Ask, Solve, Generate: Self-Evolving Unified Multimodal Understanding and Generation via Self-Consistency Rewards.}} \textit{arXiv preprint}.
+  \item[\textbf{[S.4]}]
+    Shravan Venkatraman, Ritesh Thawkar, Omkar Thawakar, Rao Muhammad Anwer, Hisham Cholakkal, Salman Khan, Fahad Khan. (2026). \href{https://arxiv.org/abs/2606.27373}{\textbf{Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models.}} \textit{arXiv preprint}.
+  \item[\textbf{[C.1]}]
+    Wafa Al Ghallabi, Muhammad Zaigham Zaheer, Ritesh Thawkar, Omkar Thawakar, Salman Khan, Fahad Shahbaz Khan. (2026). \href{https://doi.org/10.1109/wacv61042.2026.00021}{\textbf{A Multi-Agent Diffusion Approach for MRI Anomaly Segmentation via Modality-Specific LoRA Specialization.}} In \textit{WACV 2026}.
+  \item[\textbf{[S.5]}]
+    Abdelrahman Shaker, Ahmed Heakl, Jaseel Muhammad, Ritesh Thawkar, Omkar Thawakar, Senmao Li, Hisham Cholakkal, Ian Reid, Eric P. Xing, Salman Khan, Fahad Shahbaz Khan. (2026). \href{https://arxiv.org/abs/2602.20161}{\textbf{Mobile-O: Unified Multimodal Understanding and Generation on Mobile Device.}} \textit{arXiv preprint}.
+  \item[\textbf{[S.6]}]
+    Omkar Thawakar, Shravan Venkatraman, Ritesh Thawkar, Abdelrahman Shaker, Hisham Cholakkal, Rao Muhammad Anwer, Salman Khan, Fahad Khan. (2025). \href{https://arxiv.org/abs/2511.16672}{\textbf{EvoLMM: Self-Evolving Large Multimodal Models with Continuous Rewards.}} \textit{arXiv preprint}.
 \end{description}
 
 \section*{Selected Projects}
-\textbf{MBZUAI Web Agent Suite} \hfill \textit{Production} \\
-\textit{Agentic RAG, Web Agents, LLM Orchestration, FastAPI} \\
-Production web-agent system answering MBZUAI website queries with retrieval, tool use, and response verification.
-\par\smallskip
-\textbf{Lawa Agent Studio} \hfill \textit{Private Platform} \\
-\textit{LLM, RAG, Workflow Orchestration, React, FastAPI} \\
-Platform for creating customizable LLM-powered agentic chatbots with configurable tools, tone, and knowledge sources.
-\par\smallskip
-\textbf{Lawa.ai} \hfill \textit{Live Product} \\
-\textit{LLM, RAG, Workflow Orchestration, FastAPI, React} \\
-Enterprise agentic AI platform for multilingual, privacy-first assistants and revenue-generating deployments. \href{https://lawa.ai}{Visit Lawa.ai}
-\par\smallskip
-\textbf{Nutrigenics.care} \hfill \textit{Startup Platform} \\
-\textit{LLM, Django, PostgreSQL, Recommendation System} \\
-Personalized nutrition platform with an image-aware Nutrition-GPT engine and recommendation workflows. \href{https://nutrigenics.care}{Visit Nutrigenics.care}
-\par\smallskip
+\begin{itemize}
+  \item \textbf{MBZUAI Web Agent Suite:}
+  \textit{Tools: [Agentic RAG, Web Agents, LLM Orchestration, FastAPI]}
+  \begin{itemize}
+    \item Built an LLM-driven agentic pipeline that resolves MBZUAI website queries using retrieval, tool-use, and response verification.
+    \item Deployed the system in production, serving thousands of users and iterating prompts, tools, and routing based on real traffic.
+    \item Developed an interaction analytics dashboard to track user intents, content gaps, and unresolved queries for continuous Agentic RAG tuning.
+  \end{itemize}
+  \item \textbf{Lawa Agent Studio:}
+  \textit{Tools: [LLM, RAG, Workflow Orchestration, React, FastAPI]}
+  \begin{itemize}
+    \item Built a platform for creating customizable LLM-powered agentic chatbots with configurable tools, tone, and knowledge sources.
+    \item Implemented ingestion and indexing pipelines for website and document sources to enable fast, accurate LLM responses.
+    \item Added analytics and evaluation hooks to measure resolution rates, user satisfaction, and retrieval quality for LLM improvements.
+  \end{itemize}
+  \item \textbf{Lawa.ai:} \href{https://lawa.ai}{[\faGlobe]}
+  \textit{Tools: [LLM, RAG, Workflow Orchestration, FastAPI, React]}
+  \begin{itemize}
+    \item Designed and developed LLM-powered web assistants to improve user interaction and engagement for websites.
+    \item Implemented a document retrieval system using vector databases to ground LLM responses and improve query resolution accuracy.
+    \item Developed backend workflows and API integration using FastAPI and websockets for scalable deployment.
+  \end{itemize}
+  \item \textbf{Nutrigenics.care:} \href{https://nutrigenics.care}{[\faGlobe]}
+  \textit{Tools: [LLM, Django, PostgreSQL, Recommendation System]}
+  \begin{itemize}
+    \item Designed and developed the platform's web infrastructure to manage user and recipe data efficiently, enhancing scalability and usability.
+    \item Integrated NutritionGPT to power LLM-based recipe recommendations from image inputs and user preferences.
+    \item Implemented a personalized recommendation system leveraging LLMs to tailor nutrition and recipe suggestions to individual needs.
+    \item Optimized backend workflows using Django and PostgreSQL to ensure efficient data handling and faster response times.
+  \end{itemize}
+\end{itemize}
 
-\section*{Technical Skills}
-\textbf{AI Systems:} Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases\\
-\textbf{Languages:} Python, TypeScript, JavaScript, C\\
-\textbf{ML / Deep Learning:} PyTorch, Transformers, TensorFlow, Scikit-learn, NumPy, Pandas\\
-\textbf{Web Technologies:} FastAPI, Flask, Django, React, Tailwind CSS\\
-\textbf{Databases:} PostgreSQL, MySQL, SQLite\\
-\textbf{Cloud \& DevOps:} AWS, Azure, Git
+\section*{Experience}
+\begin{itemize}
+  \item \begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lr}
+    \textbf{Mohamed Bin Zayed University of Artificial Intelligence} & \textit{Sep 2024 - Present} \\
+    \textit{Research Assistant} & Abu Dhabi, UAE
+  \end{tabular*}
+  \begin{itemize}
+    \item Developing Novel Visual Reasoning Benchmarks to stress-test the sequential logic capabilities of VLLMs.
+    \item Pioneering Composed Video Retrieval techniques utilizing dense video descriptions for fine-grained understanding.
+    \item Engineered core document retrieval systems and scalable web agents powering the enterprise Lawa.AI platform.
+    \item Built and optimized the AI infrastructure and retrieval backends for the Nutrigenics.care startup platform.
+  \end{itemize}
+  \item \begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lr}
+    \textbf{Quantiphi Analytics} & \textit{Feb 2024 - May 2024} \\
+    \textit{Framework Engineer Intern} & Remote
+  \end{tabular*}
+  \begin{itemize}
+    \item Architected robust data-ingestion pipelines tailored for tracking small to medium business operations.
+    \item Developed ML-driven analytics systems to automate the extraction of actionable business insights.
+    \item Optimized and streamlined enterprise data processing workflows, reducing overall processing time by 20\%.
+  \end{itemize}
+\end{itemize}
 
-\vfill
-{\footnotesize\color{gray} Last updated 2026-09-09 from the portfolio's shared profile data.}
+\section*{Skills}
+\begin{itemize}
+  \item \textbf{AI Systems:} Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases
+  \item \textbf{Languages:} Python, TypeScript, JavaScript, C
+  \item \textbf{ML / Deep Learning:} PyTorch, Transformers, TensorFlow, Scikit-learn, NumPy, Pandas
+  \item \textbf{Web Technologies:} FastAPI, Flask, Django, React, Tailwind CSS
+  \item \textbf{Databases:} PostgreSQL, MySQL, SQLite
+  \item \textbf{Cloud \& DevOps:} AWS, Azure, Git
+\end{itemize}
+
+\section*{Additional Information}
+\textbf{Languages:} English (Intermediate), Hindi (Advanced), Marathi (Advanced)\\
+\textbf{Interests:} Reading, Music, Sports (Cricket, Badminton)
 
 \end{document}

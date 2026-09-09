@@ -23,15 +23,12 @@ function latex(value) {
     .replace(/·/g, "\\textperiodcentered{}")
 }
 
-function link(url, label) {
-  return "\\href{" + latex(url) + "}{" + latex(label) + "}"
+function rawLink(url, content) {
+  return "\\href{" + latex(url) + "}{" + content + "}"
 }
 
-function emphasizeName(authors) {
-  return latex(authors).replaceAll(
-    latex(profile.person.name),
-    "\\textbf{" + latex(profile.person.name) + "}",
-  )
+function textLink(url, label) {
+  return rawLink(url, latex(label))
 }
 
 function sentence(value) {
@@ -39,56 +36,117 @@ function sentence(value) {
   return /[.!?]$/.test(text) ? text : text + "."
 }
 
+function detailSentences(value) {
+  return String(value)
+    .split(/(?<=[.!?])\s+(?=[A-Z])/)
+    .map((part) => sentence(part))
+}
+
+function educationSchool(item) {
+  return item.school === profile.person.institution.shortName
+    ? profile.person.institution.name
+    : item.school
+}
+
+function educationDegree(item) {
+  if (item.degree === "MSc Computer Vision") {
+    return "Master of Science in Computer Vision"
+  }
+  if (item.degree === "BTech Computer Science & Engineering") {
+    return "Bachelor of Technology in Computer Science and Engineering"
+  }
+  return item.degree
+}
+
 const education = profile.education
   .map((item) =>
     [
-      "\\textbf{" + latex(item.degree) + "} & " + latex(item.period) + " \\\\",
-      latex(item.school) + " & \\textbf{GPA: " + latex(item.gpa) + "} \\\\[3pt]",
+      "  \\item \\begin{tabular*}{\\linewidth}[t]{@{\\extracolsep{\\fill}}lr}",
+      "    \\textbf{" + latex(educationSchool(item)) + "} & \\textit{" + latex(item.period) + "} \\\\",
+      "    \\textit{" + latex(educationDegree(item)) + "} & " + latex(item.location),
+      "  \\end{tabular*}",
+      "  \\begin{itemize}",
+      "    \\item GPA: " + latex(item.gpa.replace(/\s*\/\s*/g, "/")),
+      "  \\end{itemize}",
     ].join("\n"),
   )
   .join("\n")
 
-const experience = profile.experiences
-  .map((item) =>
-    [
-      "\\textbf{" + latex(item.role) + "} \\hfill " + latex(item.period) + " \\\\",
-      "\\textit{" + latex(item.company) + "} \\hfill " + latex(item.location),
-      "\\begin{itemize}",
-      item.highlights.map((highlight) => "  \\item " + latex(highlight)).join("\n"),
-      "\\end{itemize}",
-    ].join("\n"),
-  )
-  .join("\n")
+const publicationCounters = { C: 0, S: 0 }
+
+function publicationLabel(publication) {
+  const prefix = publication.type.toLowerCase().includes("conference") ? "C" : "S"
+  publicationCounters[prefix] += 1
+  return "[" + prefix + "." + publicationCounters[prefix] + "]"
+}
+
+function publicationVenue(publication) {
+  if (/^arXiv\b/i.test(publication.tag)) {
+    return "\\textit{arXiv preprint}."
+  }
+
+  const aclFindings = publication.tag.match(/^ACL Findings\s+(\d{4})$/i)
+  if (aclFindings) {
+    return "In \\textit{Findings of ACL " + aclFindings[1] + "}."
+  }
+
+  return "In \\textit{" + latex(publication.tag) + "}."
+}
 
 const publications = profile.publications
   .filter((publication) => publication.includeInCv)
-  .map(
-    (publication) =>
-      "\\item[\\textbf{" +
-      latex(publication.tag) +
-      "}] \\textbf{" +
-      latex(sentence(publication.title)) +
-      "} " +
-      emphasizeName(sentence(publication.authors)) +
-      " " +
-      link(publication.link, publication.linkLabel) +
-      ".",
-  )
+  .slice(0, profile.cv.publicationLimit)
+  .map((publication) => {
+    const title = rawLink(
+      publication.link,
+      "\\textbf{" + latex(sentence(publication.title)) + "}",
+    )
+    return [
+      "  \\item[\\textbf{" + latex(publicationLabel(publication)) + "}]",
+      "    " +
+        latex(sentence(publication.authors)) +
+        " (" +
+        latex(publication.sortDate.slice(0, 4)) +
+        "). " +
+        title +
+        " " +
+        publicationVenue(publication),
+    ].join("\n")
+  })
   .join("\n")
+
+function projectLink(project) {
+  if (!project.link) {
+    return ""
+  }
+  return " " + rawLink(project.link, "[\\faGlobe]")
+}
 
 const projects = profile.projects
   .filter((project) => project.cvFeatured)
   .map((project) =>
     [
-      "\\textbf{" +
-        latex(project.title) +
-        "} \\hfill \\textit{" +
-        latex(project.status) +
-        "} \\\\",
-      "\\textit{" + latex(project.tools.join(", ")) + "} \\\\",
-      latex(project.description) +
-        (project.link ? " " + link(project.link, project.linkLabel ?? "Project") : ""),
-      "\\par\\smallskip",
+      "  \\item \\textbf{" + latex(project.title) + ":}" + projectLink(project),
+      "  \\textit{Tools: [" + latex(project.tools.join(", ")) + "]}",
+      "  \\begin{itemize}",
+      detailSentences(project.details)
+        .map((detail) => "    \\item " + latex(detail))
+        .join("\n"),
+      "  \\end{itemize}",
+    ].join("\n"),
+  )
+  .join("\n")
+
+const experiences = profile.experiences
+  .map((item) =>
+    [
+      "  \\item \\begin{tabular*}{\\linewidth}[t]{@{\\extracolsep{\\fill}}lr}",
+      "    \\textbf{" + latex(item.company) + "} & \\textit{" + latex(item.period) + "} \\\\",
+      "    \\textit{" + latex(item.role) + "} & " + latex(item.location),
+      "  \\end{tabular*}",
+      "  \\begin{itemize}",
+      item.highlights.map((highlight) => "    \\item " + latex(highlight)).join("\n"),
+      "  \\end{itemize}",
     ].join("\n"),
   )
   .join("\n")
@@ -96,18 +154,27 @@ const projects = profile.projects
 const skills = profile.skills
   .map(
     (group) =>
-      "\\textbf{" +
+      "  \\item \\textbf{" +
       latex(group.category) +
       ":} " +
       latex(group.skills.map((skill) => skill.name).join(", ")),
   )
-  .join("\\\\\n")
+  .join("\n")
+
+const contactLinks = [
+  rawLink(profile.links.linkedin, "\\faLinkedin\\ " + latex(profile.person.name)),
+  rawLink(profile.links.github, "\\faGithub\\ " + latex(profile.person.name)),
+  rawLink(profile.links.scholar, "\\faGraduationCap\\ Google Scholar"),
+  rawLink(profile.links.huggingFace, "\\faRobot\\ Hugging Face"),
+].join(" \\enspace | \\enspace ")
 
 const document = [
-  "\\documentclass[10pt,a4paper]{article}",
-  "\\usepackage[margin=0.58in]{geometry}",
+  "\\documentclass[11pt,a4paper]{article}",
+  "\\usepackage[left=0.56in,right=0.56in,top=0.32in,bottom=0.28in]{geometry}",
   "\\usepackage[T1]{fontenc}",
   "\\usepackage[utf8]{inputenc}",
+  "\\usepackage{mathpazo}",
+  "\\usepackage{fontawesome5}",
   "\\usepackage{enumitem}",
   "\\usepackage{hyperref}",
   "\\usepackage{xcolor}",
@@ -115,64 +182,60 @@ const document = [
   "\\usepackage{titlesec}",
   "\\usepackage{microtype}",
   "",
-  "\\definecolor{accent}{HTML}{0B7285}",
-  "\\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=accent}",
+  "\\definecolor{linkblue}{HTML}{000099}",
+  "\\hypersetup{colorlinks=true,urlcolor=linkblue,linkcolor=linkblue}",
   "\\pagestyle{empty}",
   "\\setlength{\\parindent}{0pt}",
-  "\\setlength{\\parskip}{2pt}",
-  "\\setlist[itemize]{leftmargin=1.2em,itemsep=1pt,topsep=2pt}",
-  "\\setlist[description]{leftmargin=0pt,labelsep=0.6em,itemsep=4pt,topsep=2pt}",
-  "\\titleformat{\\section}{\\large\\bfseries\\color{accent}}{}{0pt}{}[\\vspace{-3pt}\\rule{\\linewidth}{0.35pt}]",
-  "\\titlespacing*{\\section}{0pt}{8pt}{4pt}",
+  "\\setlength{\\parskip}{0pt}",
+  "\\setlength{\\tabcolsep}{0pt}",
+  "\\setlength{\\emergencystretch}{1em}",
+  "\\raggedbottom",
+  "\\setlist[itemize,1]{label=\\textbullet,leftmargin=0.8em,labelsep=0.35em,itemsep=0.55em,topsep=0.25em,parsep=0pt,partopsep=0pt}",
+  "\\setlist[itemize,2]{label=\\textopenbullet,leftmargin=1.15em,labelsep=0.35em,itemsep=0.28em,topsep=0.18em,parsep=0pt,partopsep=0pt}",
+  "\\setlist[description]{leftmargin=3.85em,labelwidth=3.2em,labelsep=0.5em,itemsep=0.55em,topsep=0.2em,parsep=0pt,partopsep=0pt}",
+  "\\titleformat{\\section}{\\Large\\bfseries\\scshape}{}{0pt}{}[\\vspace{0.05em}\\titlerule]",
+  "\\titlespacing*{\\section}{0pt}{0.7em}{0.45em}",
   "",
   "\\begin{document}",
   "",
   "\\begin{center}",
-  "  {\\LARGE\\bfseries " + latex(profile.person.name) + "}\\\\[4pt]",
-  "  " + latex(profile.person.headline) + "\\\\[4pt]",
-  "  " +
-    latex(profile.person.location) +
-    " \\enspace | \\enspace " +
-    link("mailto:" + profile.person.email, profile.person.email) +
-    " \\enspace | \\enspace " +
-    latex(profile.person.phone) +
-    "\\\\[3pt]",
-  "  " +
-    [
-      link(profile.links.github, "GitHub"),
-      link(profile.links.scholar, "Google Scholar"),
-      link(profile.links.huggingFace, "Hugging Face"),
-      link(profile.links.linkedin, "LinkedIn"),
-      link(profile.links.portfolio, "Portfolio"),
-    ].join(" \\enspace | \\enspace "),
+  "  {\\Huge\\bfseries " + latex(profile.person.name) + "}\\\\[2pt]",
+  "  " + latex(profile.person.phone) + " \\enspace | \\enspace " + textLink("mailto:" + profile.person.email, profile.person.email) + "\\\\[3pt]",
+  "  " + contactLinks,
   "\\end{center}",
+  "\\vspace{-0.45em}",
   "",
-  "\\section*{Profile}",
-  latex(profile.person.summary),
+  "\\section*{Objective}",
+  latex(profile.person.cvObjective),
   "",
   "\\section*{Education}",
-  "\\begin{tabularx}{\\linewidth}{@{}X r@{}}",
+  "\\begin{itemize}",
   education,
-  "\\end{tabularx}",
+  "\\end{itemize}",
   "",
-  "\\section*{Experience}",
-  experience,
-  "",
-  "\\section*{Publications}",
+  "\\section*{Selected Publications \\hfill \\textcolor{linkblue}{\\normalfont\\small\\scshape C=Conference, J=Journal, P=Patent, S=In Submission, T=Thesis}}",
   "\\begin{description}",
   publications,
   "\\end{description}",
   "",
   "\\section*{Selected Projects}",
+  "\\begin{itemize}",
   projects,
+  "\\end{itemize}",
   "",
-  "\\section*{Technical Skills}",
+  "\\section*{Experience}",
+  "\\begin{itemize}",
+  experiences,
+  "\\end{itemize}",
+  "",
+  "\\section*{Skills}",
+  "\\begin{itemize}",
   skills,
+  "\\end{itemize}",
   "",
-  "\\vfill",
-  "{\\footnotesize\\color{gray} Last updated " +
-    latex(profile.lastUpdated) +
-    " from the portfolio's shared profile data.}",
+  "\\section*{Additional Information}",
+  "\\textbf{Languages:} " + latex(profile.cv.languages.join(", ")) + "\\\\",
+  "\\textbf{Interests:} " + latex(profile.cv.interests.join(", ")),
   "",
   "\\end{document}",
   "",
@@ -182,6 +245,6 @@ mkdirSync(new URL("../cv", import.meta.url), { recursive: true })
 writeFileSync(new URL("../cv/resume.tex", import.meta.url), document)
 console.log(
   "Generated cv/resume.tex with " +
-    profile.publications.filter((item) => item.includeInCv).length +
-    " publications.",
+    profile.publications.filter((item) => item.includeInCv).slice(0, profile.cv.publicationLimit).length +
+    " selected publications.",
 )

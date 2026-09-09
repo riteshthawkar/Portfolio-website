@@ -58,6 +58,7 @@ export interface ProfileData {
       url: string
     }
     summary: string
+    cvObjective: string
     hero: string[]
   }
   links: Record<"portfolio" | "scholar" | "huggingFace" | "linkedin" | "github", string>
@@ -67,6 +68,11 @@ export interface ProfileData {
     openAlexAuthorId: string
     semanticScholarAuthorId: string
     dblpPid: string
+  }
+  cv: {
+    publicationLimit: number
+    languages: string[]
+    interests: string[]
   }
   research: {
     narrative: string
@@ -97,6 +103,7 @@ export interface ProfileData {
   education: Array<{
     degree: string
     school: string
+    location: string
     period: string
     gpa: string
   }>
