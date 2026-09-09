@@ -43,6 +43,7 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: cv/resume.tex
+          work_in_root_file_dir: true
 
       - name: Publish generated CV
         run: cp cv/resume.pdf public/resume.pdf

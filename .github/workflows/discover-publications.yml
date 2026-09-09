@@ -30,23 +30,37 @@ jobs:
         env:
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
 
+      - name: Check for publication changes
+        id: publication_changes
+        run: |
+          if git diff --quiet -- content/profile.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Validate profile data
         run: npm run validate:profile
 
       - name: Regenerate CV and profile README
+        if: steps.publication_changes.outputs.changed == 'true'
         run: |
           npm run generate:cv
           npm run generate:readme
 
       - name: Compile CV
+        if: steps.publication_changes.outputs.changed == 'true'
         uses: xu-cheng/latex-action@v4
         with:
           root_file: cv/resume.tex
+          work_in_root_file_dir: true
 
       - name: Publish generated CV
+        if: steps.publication_changes.outputs.changed == 'true'
         run: cp cv/resume.pdf public/resume.pdf
 
       - name: Open publication review pull request
+        if: steps.publication_changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
           branch: automation/publication-discovery
