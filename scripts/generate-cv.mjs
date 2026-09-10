@@ -202,7 +202,6 @@ const document = [
   "\\usepackage[left=0.56in,right=0.56in,top=0.32in,bottom=0.28in]{geometry}",
   "\\usepackage[T1]{fontenc}",
   "\\usepackage[utf8]{inputenc}",
-  "\\usepackage{mathpazo}",
   "\\usepackage{fontawesome5}",
   "\\usepackage{enumitem}",
   "\\usepackage{hyperref}",
