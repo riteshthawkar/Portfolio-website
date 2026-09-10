@@ -1,47 +1,41 @@
-import { AnimatedSection } from "./animated-section"
 import { profile } from "@/lib/profile"
+
+import { AnimatedSection } from "./animated-section"
+import { SectionHeading } from "./section-heading"
 
 export function ResearchFocus() {
   return (
-    <section id="focus" className="px-6 py-0 relative">
-      <div className="mx-auto max-w-5xl overflow-hidden border-x border-t border-border bg-background relative z-10">
-        <AnimatedSection className="border-b border-border bg-background">
-          <div className="px-6 py-10 sm:px-10 sm:py-12">
-            <p className="mb-2 font-sans text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              Direction
-            </p>
-            <h2 className="font-display font-semibold text-3xl tracking-tight text-foreground sm:text-4xl">
-              Research Focus
-            </h2>
-          </div>
-        </AnimatedSection>
+    <section id="focus" className="site-section">
+      <div className="site-shell">
+        <SectionHeading
+          eyebrow="Research direction"
+          title="What I investigate"
+          aside={`${profile.research.focusAreas.length} active themes`}
+        />
 
-        <div className="grid grid-cols-1 sm:grid-cols-[2.5rem_minmax(0,1fr)_2.5rem]">
-          <div className="section-rail hidden border-r border-border sm:block" />
-          <div className="grid gap-0 border-b border-border sm:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <AnimatedSection className="border-x border-t border-border bg-background px-5 py-6 sm:px-6 sm:py-8">
-              <p className="text-xl leading-relaxed text-foreground sm:text-2xl">
+        <AnimatedSection>
+          <div className="grid gap-10 sm:grid-cols-[minmax(0,1.15fr)_minmax(16rem,0.85fr)] sm:gap-14">
+            <div>
+              <p className="text-xl leading-8 text-foreground sm:text-2xl sm:leading-9">
                 {profile.research.narrative}
               </p>
-            </AnimatedSection>
+              <p className="mt-6 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
+                {profile.research.openTo.join(" ")}
+              </p>
+            </div>
 
-            <AnimatedSection delay={150} className="border-x border-t border-border bg-background">
-              <div className="divide-y divide-border">
-                {profile.research.focusAreas.map((area, index) => (
-                  <div key={area} className="grid grid-cols-[3rem_minmax(0,1fr)]">
-                    <span className="border-r border-border px-4 py-4 font-sans text-xs font-semibold tracking-[0.24em] text-muted-foreground">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <p className="px-4 py-4 text-sm leading-relaxed text-muted-foreground">
-                      {area}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
+            <ol className="border-t border-border">
+              {profile.research.focusAreas.map((area, index) => (
+                <li key={area} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-b border-border py-4">
+                  <span className="text-xs text-brand">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="text-sm leading-6 text-muted-foreground">{area}</p>
+                </li>
+              ))}
+            </ol>
           </div>
-          <div className="section-rail hidden border-l border-border sm:block" />
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   )

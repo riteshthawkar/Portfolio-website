@@ -1,8 +1,12 @@
-"use client"
+import {
+  FileText,
+  Github,
+  GraduationCap,
+  Linkedin,
+  Mail,
+} from "lucide-react"
 
-import { Mail, Linkedin, Github, GraduationCap, FileText } from "lucide-react"
 import { HuggingFaceIcon } from "./hugging-face-icon"
-import { ThemeToggle } from "./theme-toggle"
 import { profile } from "@/lib/profile"
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
@@ -10,103 +14,58 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 const contactLinks = [
   {
     icon: Mail,
-    label: "Mail",
-    value: profile.person.email,
+    label: "Email",
     href: `mailto:${profile.person.email}`,
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    value: profile.links.linkedin,
     href: profile.links.linkedin,
   },
   {
     icon: Github,
     label: "GitHub",
-    value: profile.links.github,
     href: profile.links.github,
   },
   {
     icon: GraduationCap,
-    label: "Google Scholar",
-    value: profile.person.name,
+    label: "Scholar",
     href: profile.links.scholar,
   },
   {
     icon: HuggingFaceIcon,
     label: "Hugging Face",
-    value: profile.links.huggingFace,
     href: profile.links.huggingFace,
   },
   {
     icon: FileText,
     label: "CV",
-    value: profile.person.name,
     href: `${basePath}/resume.pdf`,
   },
 ]
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Focus", href: "#focus" },
-  { label: "Publications", href: "#publications" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-]
-
 export function Footer() {
   return (
-    <footer className="px-6 py-0">
-      <div className="mx-auto max-w-5xl overflow-hidden border border-border bg-background">
-        {/* Contact Bento */}
-        <div className="flex flex-col items-center justify-center border-b border-border bg-background px-6 py-10 text-center sm:px-10 sm:py-12">
-          <h3 className="mb-2 font-display text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            {profile.person.name}
-          </h3>
-          <p className="mb-3 text-sm text-muted-foreground">
-            {profile.person.currentRole}
-          </p>
-          <p className="mb-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            {profile.research.openTo[0]}
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
-            {contactLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                className="group flex items-center gap-2 text-muted-foreground transition-colors hover:text-brand"
-              >
-                <link.icon className="h-5 w-5 shrink-0" />
-                <span className="text-sm font-medium">{link.label}</span>
-              </a>
-            ))}
-          </div>
+    <footer className="px-6 pb-8 pt-16 sm:pb-10 sm:pt-24">
+      <div className="site-shell border-t border-border pt-6">
+        <div className="flex flex-wrap gap-2">
+          {contactLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith("mailto") ? undefined : "_blank"}
+              rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+              className="inline-flex min-h-9 items-center gap-2 border border-border px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:border-brand hover:text-brand"
+            >
+              <link.icon className="h-3.5 w-3.5" />
+              {link.label}
+            </a>
+          ))}
         </div>
 
-        {/* Footer bar */}
-        <div className="px-6 py-5 sm:px-10">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <p className="text-sm text-muted-foreground">
-              {profile.person.name} | {new Date().getFullYear()}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-              <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-brand"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </nav>
-              <ThemeToggle />
-            </div>
-          </div>
+        <div className="mt-8 flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>{profile.person.name} / {new Date().getFullYear()}</p>
+          <p>Research, engineering, and useful systems.</p>
         </div>
       </div>
     </footer>

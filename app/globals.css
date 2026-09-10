@@ -4,9 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.985 0 0);
+  --background: oklch(0.99 0 0);
   --foreground: oklch(0.145 0 0);
-  --card: oklch(0.97 0 0);
+  --card: oklch(0.975 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
@@ -14,26 +14,24 @@
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.95 0 0);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.93 0 0);
-  --muted-foreground: oklch(0.45 0 0);
+  --muted: oklch(0.955 0 0);
+  --muted-foreground: oklch(0.46 0 0);
   --accent: oklch(0.95 0 0);
   --accent-foreground: oklch(0.205 0 0);
-  --brand: oklch(0.56 0.16 190);
+  --brand: oklch(0.54 0.13 184);
   --brand-foreground: oklch(0.985 0 0);
-  --brand-muted: oklch(0.93 0.04 190);
+  --brand-muted: oklch(0.94 0.035 184);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0 0);
-  --input: oklch(0.9 0 0);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.3 0 0);
   --chart-2: oklch(0.45 0 0);
   --chart-3: oklch(0.6 0 0);
   --chart-4: oklch(0.75 0 0);
   --chart-5: oklch(0.85 0 0);
-  --rail-fill: color-mix(in oklch, var(--muted) 18%, transparent);
-  --rail-line: color-mix(in oklch, var(--border) 72%, transparent);
-  --radius: 0rem;
+  --radius: 0.25rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -45,35 +43,33 @@
 }
 
 .dark {
-  --background: oklch(0.1 0 0);
-  --foreground: oklch(0.93 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.93 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.93 0 0);
-  --primary: oklch(0.93 0 0);
-  --primary-foreground: oklch(0.1 0 0);
-  --secondary: oklch(0.2 0 0);
-  --secondary-foreground: oklch(0.93 0 0);
-  --muted: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.6 0 0);
-  --accent: oklch(0.2 0 0);
-  --accent-foreground: oklch(0.93 0 0);
-  --brand: oklch(0.72 0.14 190);
-  --brand-foreground: oklch(0.1 0 0);
-  --brand-muted: oklch(0.22 0.045 190);
+  --background: oklch(0.095 0 0);
+  --foreground: oklch(0.92 0 0);
+  --card: oklch(0.13 0 0);
+  --card-foreground: oklch(0.92 0 0);
+  --popover: oklch(0.125 0 0);
+  --popover-foreground: oklch(0.92 0 0);
+  --primary: oklch(0.92 0 0);
+  --primary-foreground: oklch(0.095 0 0);
+  --secondary: oklch(0.16 0 0);
+  --secondary-foreground: oklch(0.92 0 0);
+  --muted: oklch(0.155 0 0);
+  --muted-foreground: oklch(0.66 0 0);
+  --accent: oklch(0.17 0 0);
+  --accent-foreground: oklch(0.92 0 0);
+  --brand: oklch(0.74 0.12 184);
+  --brand-foreground: oklch(0.095 0 0);
+  --brand-muted: oklch(0.2 0.035 184);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.22 0 0);
-  --input: oklch(0.22 0 0);
+  --border: oklch(0.24 0 0);
+  --input: oklch(0.24 0 0);
   --ring: oklch(0.439 0 0);
   --chart-1: oklch(0.85 0 0);
   --chart-2: oklch(0.7 0 0);
   --chart-3: oklch(0.55 0 0);
   --chart-4: oklch(0.4 0 0);
   --chart-5: oklch(0.25 0 0);
-  --rail-fill: color-mix(in oklch, var(--muted) 20%, transparent);
-  --rail-line: color-mix(in oklch, var(--border) 78%, transparent);
   --sidebar: oklch(0.145 0 0);
   --sidebar-foreground: oklch(0.93 0 0);
   --sidebar-primary: oklch(0.93 0 0);
@@ -85,9 +81,8 @@
 }
 
 @theme inline {
-  --font-display: var(--font-computer-modern), 'CMU Serif', 'Latin Modern Roman', Georgia, serif;
-  --font-serif: var(--font-computer-modern), 'CMU Serif', 'Latin Modern Roman', Georgia, serif;
-  --font-sans: var(--font-inter), 'Inter', Arial, sans-serif;
+  --font-display: var(--font-season), var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-sans: var(--font-season), var(--font-inter), 'Inter', system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -115,10 +110,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: 0rem;
-  --radius-md: 0rem;
-  --radius-lg: 0rem;
-  --radius-xl: 0rem;
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -135,36 +130,75 @@
   }
 
   body {
-    @apply bg-background text-foreground font-serif;
-    font-kerning: normal;
-    text-rendering: optimizeLegibility;
+    @apply bg-background text-foreground font-sans;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   html,
   body,
-  .font-serif,
+  .font-sans,
   .font-display {
-    font-family: var(--font-computer-modern), 'CMU Serif', 'Latin Modern Roman', Georgia, serif;
+    font-family: var(--font-season), var(--font-inter), 'Inter', system-ui, sans-serif;
+    letter-spacing: 0;
   }
 
-  .font-sans,
+  ::selection {
+    background: var(--brand);
+    color: var(--brand-foreground);
+  }
+
+  a,
   button,
   input,
   select,
   textarea {
-    font-family: var(--font-inter), 'Inter', Arial, sans-serif;
+    border-radius: var(--radius);
   }
-
 }
 
-.section-rail {
-  background-color: var(--rail-fill);
-  background-image: repeating-linear-gradient(
-    135deg,
-    transparent 0,
-    transparent 10px,
-    var(--rail-line) 10px,
-    var(--rail-line) 11px
-  );
-  background-size: 16px 16px;
+.site-section {
+  scroll-margin-top: 5rem;
+  padding: 5rem 1.5rem 0;
+}
+
+.site-shell {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+}
+
+.hero-reveal {
+  animation: hero-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 640px) {
+  .site-section {
+    padding-top: 7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-reveal {
+    animation: none;
+  }
 }

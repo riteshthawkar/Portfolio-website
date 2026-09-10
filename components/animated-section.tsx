@@ -13,10 +13,17 @@ export function AnimatedSection({ children, className = "", delay = 0 }: Animate
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      timer = setTimeout(() => setIsVisible(true), 0)
+      return () => clearTimeout(timer)
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), delay)
+          timer = setTimeout(() => setIsVisible(true), delay)
           observer.unobserve(entry.target)
         }
       },
@@ -24,13 +31,16 @@ export function AnimatedSection({ children, className = "", delay = 0 }: Animate
     )
 
     if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      if (timer) clearTimeout(timer)
+    }
   }, [delay])
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
+      className={`transition-all duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       } ${className}`}
     >
