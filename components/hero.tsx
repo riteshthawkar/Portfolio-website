@@ -74,14 +74,14 @@ export function Hero() {
                 href={`${basePath}/resume.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-foreground bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:border-brand hover:bg-brand hover:text-brand-foreground"
+                className="inline-flex items-center gap-2 border border-foreground bg-foreground px-5 py-3 font-sans text-sm font-medium text-background transition-colors hover:border-brand hover:bg-brand hover:text-brand-foreground"
               >
                 <Download className="h-4 w-4" />
                 Download CV
               </a>
               <a
                 href="#publications"
-                className="inline-flex items-center border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand"
+                className="inline-flex items-center border border-border bg-background px-5 py-3 font-sans text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand"
               >
                 View Research
               </a>

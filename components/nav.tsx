@@ -49,7 +49,7 @@ export function Nav() {
       className="pointer-events-none fixed top-0 left-0 right-0 z-50 px-6"
     >
       <nav
-        className="pointer-events-auto mx-auto flex max-w-5xl items-stretch justify-between border border-border/70 bg-background/70 backdrop-blur-xl transition-all duration-500"
+        className="pointer-events-auto mx-auto flex max-w-5xl items-stretch justify-between border border-border/70 bg-background/70 font-sans backdrop-blur-xl transition-all duration-500"
       >
         <a
           href="#about"

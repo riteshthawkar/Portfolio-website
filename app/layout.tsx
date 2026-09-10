@@ -5,10 +5,30 @@ import { Analytics } from '@vercel/analytics/next'
 import { profile } from '@/lib/profile'
 import './globals.css'
 
-const season = localFont({
-  src: '../public/fonts/SeasonCollectionVF-TRIAL.ttf',
-  variable: '--font-season',
-  weight: '300 900',
+const computerModern = localFont({
+  src: [
+    {
+      path: '../public/fonts/CMUSerif-Roman.otf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/CMUSerif-Italic.otf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../public/fonts/CMUSerif-Bold.otf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/CMUSerif-BoldItalic.otf',
+      weight: '700',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-computer-modern',
   display: 'swap',
 })
 
@@ -86,8 +106,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${season.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="en" suppressHydrationWarning className={`${computerModern.variable} ${inter.variable}`}>
+      <body className="font-serif antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
