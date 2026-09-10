@@ -134,27 +134,7 @@ function publicationEntries(items) {
 const includedPublications = profile.publications
   .filter((publication) => publication.includeInCv)
   .toSorted((a, b) => b.sortDate.localeCompare(a.sortDate))
-const peerReviewedPublications = includedPublications.filter(
-  (publication) => !/^arXiv\b/i.test(publication.tag),
-)
-const preprintPublications = includedPublications.filter(
-  (publication) => /^arXiv\b/i.test(publication.tag),
-)
-
-function publicationGroup(title, items) {
-  return [
-    "\\Needspace{8\\baselineskip}",
-    "{\\large\\bfseries " + latex(title) + "}\\par",
-    "\\begin{description}",
-    publicationEntries(items),
-    "\\end{description}",
-  ].join("\n")
-}
-
-const publications = [
-  publicationGroup("Peer-Reviewed Publications", peerReviewedPublications),
-  publicationGroup("Preprints", preprintPublications),
-].join("\n\n")
+const publications = publicationEntries(includedPublications)
 
 function projectLink(project) {
   if (!project.link) {
@@ -260,7 +240,9 @@ const document = [
   "\\end{itemize}",
   "",
   "\\section*{Publications}",
+  "\\begin{description}",
   publications,
+  "\\end{description}",
   "",
   "\\Needspace{14\\baselineskip}",
   "\\section*{Experience}",
