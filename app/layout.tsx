@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
-import { Analytics } from '@vercel/analytics/next'
 import { profile } from '@/lib/profile'
 import './globals.css'
 
@@ -95,7 +94,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <Analytics />
         </ThemeProvider>
       </body>
     </html>
