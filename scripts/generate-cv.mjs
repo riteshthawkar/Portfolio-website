@@ -111,14 +111,18 @@ function publicationVenue(publication) {
 }
 
 function publicationEntries(items) {
-  return items.map((publication, index) => {
+  const counters = { C: 0, S: 0 }
+
+  return items.map((publication) => {
+    const prefix = /^arXiv\b/i.test(publication.tag) ? "S" : "C"
+    counters[prefix] += 1
     const title = rawLink(
       publication.link,
       "\\textbf{" + latex(sentence(publication.title)) + "}",
     )
     return [
       "  \\par\\Needspace{5\\baselineskip}",
-      "  \\item[\\textbf{[" + (index + 1) + "]}]",
+      "  \\item[\\textbf{[" + prefix + counters[prefix] + "]}]",
       "    " +
         emphasizeAuthorName(publication.authors) +
         " (" +
@@ -239,7 +243,7 @@ const document = [
   education,
   "\\end{itemize}",
   "",
-  "\\section*{Publications}",
+  "\\section*{Publications \\hfill \\textcolor{linkblue}{\\normalfont\\small C = Conference, S = Preprint}}",
   "\\begin{description}",
   publications,
   "\\end{description}",
