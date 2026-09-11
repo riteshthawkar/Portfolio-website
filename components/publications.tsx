@@ -7,6 +7,9 @@ import { profile, type Publication } from "@/lib/profile"
 import { AnimatedSection } from "./animated-section"
 import { SectionHeading } from "./section-heading"
 
+const INITIAL_PUBLICATION_COUNT = 5
+const PUBLICATION_PAGE_SIZE = 5
+
 function highlightName(authors: string) {
   const parts = authors.split(profile.person.name)
 
@@ -136,7 +139,7 @@ export function Publications() {
     () => [...new Set(publications.map((publication) => publication.sortDate.slice(0, 4)))],
     [publications],
   )
-  const [view, setView] = useState<"latest" | "all">("latest")
+  const [visibleCount, setVisibleCount] = useState(INITIAL_PUBLICATION_COUNT)
   const [query, setQuery] = useState("")
   const [year, setYear] = useState("all")
   const [category, setCategory] = useState("all")
@@ -159,14 +162,15 @@ export function Publications() {
     })
   }, [category, publications, query, year])
 
-  const displayedPublications =
-    view === "latest" ? publications.slice(0, 5) : filteredPublications
+  const displayedPublications = filteredPublications.slice(0, visibleCount)
   const hasActiveFilters = query.length > 0 || year !== "all" || category !== "all"
+  const remainingPublicationCount = filteredPublications.length - displayedPublications.length
 
   function clearFilters() {
     setQuery("")
     setYear("all")
     setCategory("all")
+    setVisibleCount(INITIAL_PUBLICATION_COUNT)
   }
 
   return (
@@ -176,100 +180,94 @@ export function Publications() {
           eyebrow="Research output"
           title="Publications"
           description="Peer-reviewed work and preprints, ordered by release date."
-          aside={`${publications.length} papers`}
+          aside={
+            <div className="flex flex-wrap items-center gap-3 sm:justify-end">
+              <span>{publications.length} papers</span>
+              <a
+                href={profile.links.scholar}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 items-center gap-2 border border-border px-3 font-medium text-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              >
+                Google Scholar
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          }
         />
 
         <AnimatedSection>
           <div>
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="inline-flex border border-border" role="group" aria-label="Publication view">
-                <button
-                  type="button"
-                  aria-pressed={view === "latest"}
-                  onClick={() => setView("latest")}
-                  className={`px-3 py-2 text-sm font-medium transition-colors ${
-                    view === "latest"
-                      ? "bg-foreground text-background"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  Latest 5
-                </button>
-                <button
-                  type="button"
-                  aria-pressed={view === "all"}
-                  onClick={() => setView("all")}
-                  className={`border-l border-border px-3 py-2 text-sm font-medium transition-colors ${
-                    view === "all"
-                      ? "bg-foreground text-background"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  All {publications.length}
-                </button>
-              </div>
+            <div className="flex justify-end">
               <p className="text-xs text-muted-foreground" aria-live="polite">
-                Showing {displayedPublications.length} of {publications.length}
+                Showing {displayedPublications.length} of {filteredPublications.length}
               </p>
             </div>
 
-            {view === "all" ? (
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_8rem_9rem_auto]">
-                <label className="relative block sm:col-span-2 lg:col-span-1">
-                  <span className="sr-only">Search publications</span>
-                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <input
-                    type="search"
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    placeholder="Search publications"
-                    className="h-10 w-full border border-border bg-transparent pl-9 pr-3 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-brand"
-                  />
-                </label>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_8rem_9rem_auto]">
+              <label className="relative block sm:col-span-2 lg:col-span-1">
+                <span className="sr-only">Search publications</span>
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="search"
+                  value={query}
+                  onChange={(event) => {
+                    setQuery(event.target.value)
+                    setVisibleCount(INITIAL_PUBLICATION_COUNT)
+                  }}
+                  placeholder="Search publications"
+                  className="h-10 w-full border border-border bg-transparent pl-9 pr-3 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-brand"
+                />
+              </label>
 
-                <label>
-                  <span className="sr-only">Filter by year</span>
-                  <select
-                    value={year}
-                    onChange={(event) => setYear(event.target.value)}
-                    className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none focus:border-brand"
-                  >
-                    <option value="all">All years</option>
-                    {years.map((publicationYear) => (
-                      <option key={publicationYear} value={publicationYear}>
-                        {publicationYear}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label>
-                  <span className="sr-only">Filter by publication type</span>
-                  <select
-                    value={category}
-                    onChange={(event) => setCategory(event.target.value)}
-                    className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none focus:border-brand"
-                  >
-                    <option value="all">All types</option>
-                    <option value="peer-reviewed">Peer reviewed</option>
-                    <option value="preprint">Preprints</option>
-                  </select>
-                </label>
-
-                <button
-                  type="button"
-                  onClick={clearFilters}
-                  disabled={!hasActiveFilters}
-                  className="inline-flex h-10 items-center justify-center gap-2 border border-border px-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+              <label>
+                <span className="sr-only">Filter by year</span>
+                <select
+                  value={year}
+                  onChange={(event) => {
+                    setYear(event.target.value)
+                    setVisibleCount(INITIAL_PUBLICATION_COUNT)
+                  }}
+                  className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none focus:border-brand"
                 >
-                  <X className="h-4 w-4" />
-                  Clear
-                </button>
-              </div>
-            ) : null}
+                  <option value="all">All years</option>
+                  {years.map((publicationYear) => (
+                    <option key={publicationYear} value={publicationYear}>
+                      {publicationYear}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label>
+                <span className="sr-only">Filter by publication type</span>
+                <select
+                  value={category}
+                  onChange={(event) => {
+                    setCategory(event.target.value)
+                    setVisibleCount(INITIAL_PUBLICATION_COUNT)
+                  }}
+                  className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none focus:border-brand"
+                >
+                  <option value="all">All types</option>
+                  <option value="peer-reviewed">Peer reviewed</option>
+                  <option value="preprint">Preprints</option>
+                </select>
+              </label>
+
+              <button
+                type="button"
+                onClick={clearFilters}
+                disabled={!hasActiveFilters}
+                className="inline-flex h-10 items-center justify-center gap-2 border border-border px-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                <X className="h-4 w-4" />
+                Clear
+              </button>
+            </div>
           </div>
 
-          <div className="mt-12 space-y-12 sm:mt-16 sm:space-y-16">
+          <div id="publication-list" className="mt-12 space-y-12 sm:mt-16 sm:space-y-16">
             {displayedPublications.map((publication, index) => (
               <PublicationItem key={publication.id} publication={publication} index={index} />
             ))}
@@ -285,18 +283,24 @@ export function Publications() {
                 </button>
               </div>
             ) : null}
-          </div>
-
-          <div className="mt-8 flex justify-end">
-            <a
-              href={profile.links.scholar}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-brand"
-            >
-              Google Scholar
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+            {remainingPublicationCount > 0 ? (
+              <div className="flex justify-center pt-2">
+                <button
+                  type="button"
+                  aria-controls="publication-list"
+                  aria-label={`Show ${Math.min(PUBLICATION_PAGE_SIZE, remainingPublicationCount)} more publications`}
+                  onClick={() =>
+                    setVisibleCount((count) =>
+                      Math.min(count + PUBLICATION_PAGE_SIZE, filteredPublications.length),
+                    )
+                  }
+                  className="inline-flex h-10 items-center gap-2 border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                  Show more
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+              </div>
+            ) : null}
           </div>
         </AnimatedSection>
       </div>

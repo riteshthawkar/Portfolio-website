@@ -1,8 +1,10 @@
+import type { ReactNode } from "react"
+
 interface SectionHeadingProps {
   eyebrow: string
   title: string
   description?: string
-  aside?: string
+  aside?: ReactNode
 }
 
 export function SectionHeading({
@@ -23,7 +25,7 @@ export function SectionHeading({
           </h2>
         </div>
         {aside ? (
-          <p className="text-sm text-muted-foreground sm:pb-1">{aside}</p>
+          <div className="text-sm text-muted-foreground sm:pb-1">{aside}</div>
         ) : null}
       </div>
       {description ? (
