@@ -47,7 +47,7 @@ const contactLinks = [
 export function Footer() {
   return (
     <footer className="px-6 pb-8 pt-16 sm:pb-10 sm:pt-24">
-      <div className="site-shell border-t border-border pt-6">
+      <div className="site-shell">
         <div className="flex flex-wrap gap-2">
           {contactLinks.map((link) => (
             <a

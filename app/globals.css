@@ -163,7 +163,7 @@
 
 .site-section {
   scroll-margin-top: 5rem;
-  padding: 5rem 1.5rem 0;
+  padding: 6rem 1.5rem 0;
 }
 
 .site-shell {
@@ -189,7 +189,7 @@
 
 @media (min-width: 640px) {
   .site-section {
-    padding-top: 7rem;
+    padding-top: 9rem;
   }
 }
 

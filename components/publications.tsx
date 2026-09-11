@@ -41,7 +41,7 @@ function PublicationItem({
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <article className="group border-b border-border py-6 [content-visibility:auto] [contain-intrinsic-size:auto_16rem] sm:py-7">
+    <article className="group [content-visibility:auto] [contain-intrinsic-size:auto_16rem]">
       <div className="grid gap-4 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-5">
         <span className="text-xs text-muted-foreground">
           {String(index + 1).padStart(2, "0")}
@@ -90,7 +90,7 @@ function PublicationItem({
             }`}
           >
             <div className="overflow-hidden">
-              <div className="border-l border-brand pl-4">
+              <div>
                 <p className="text-sm leading-6 text-muted-foreground">
                   {publication.abstract}
                 </p>
@@ -188,7 +188,7 @@ export function Publications() {
         />
 
         <AnimatedSection>
-          <div className="border-y border-border py-4">
+          <div>
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="inline-flex border border-border" role="group" aria-label="Publication view">
                 <button
@@ -290,12 +290,12 @@ export function Publications() {
             ) : null}
           </div>
 
-          <div>
+          <div className="mt-12 space-y-12 sm:mt-16 sm:space-y-16">
             {displayedPublications.map((publication, index) => (
               <PublicationItem key={publication.id} publication={publication} index={index} />
             ))}
             {displayedPublications.length === 0 ? (
-              <div className="border-b border-border py-10 text-center">
+              <div className="py-10 text-center">
                 <p className="text-sm font-medium text-foreground">No publications match these filters.</p>
                 <button
                   type="button"

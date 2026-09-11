@@ -25,7 +25,7 @@ export function Hero() {
   return (
     <section id="about" className="scroll-mt-20 px-6 pb-4 pt-28 sm:pb-8 sm:pt-36">
       <div className="site-shell">
-        <div className="hero-reveal flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4 text-xs text-muted-foreground">
+        <div className="hero-reveal flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-2">
             <MapPin className="h-3.5 w-3.5" />
             {profile.person.location}
@@ -88,11 +88,11 @@ export function Hero() {
           </div>
         </div>
 
-        <dl className="hero-reveal mt-14 grid grid-cols-3 border-y border-border [animation-delay:440ms] sm:mt-20">
-          {heroMetrics.map((metric, index) => (
+        <dl className="hero-reveal mt-14 grid grid-cols-3 gap-6 [animation-delay:440ms] sm:mt-20 sm:gap-12">
+          {heroMetrics.map((metric) => (
             <div
               key={metric.label}
-              className={`min-w-0 py-4 sm:py-5 ${index > 0 ? "border-l border-border pl-4 sm:pl-6" : ""}`}
+              className="min-w-0"
             >
               <dd className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
                 {metric.value}

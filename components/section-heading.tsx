@@ -12,7 +12,7 @@ export function SectionHeading({
   aside,
 }: SectionHeadingProps) {
   return (
-    <header className="mb-8 border-t border-border pt-5 sm:mb-10 sm:pt-6">
+    <header className="mb-10 sm:mb-14">
       <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
         <div>
           <p className="mb-2 text-xs font-medium uppercase text-muted-foreground">

@@ -35,7 +35,7 @@ export function Projects() {
         />
 
         <AnimatedSection>
-          <div className="border-t border-border">
+          <div className="space-y-12 sm:space-y-14">
             {profile.projects.map((project, index) => {
               const image = projectImages[project.title]
 
@@ -44,7 +44,7 @@ export function Projects() {
                   <DialogTrigger asChild>
                     <button
                       type="button"
-                      className="group grid w-full cursor-pointer gap-5 border-b border-border py-6 text-left transition-colors hover:bg-muted/30 sm:grid-cols-[7.5rem_minmax(0,1fr)_2.5rem] sm:items-center sm:px-2"
+                      className="group grid w-full cursor-pointer gap-5 text-left transition-colors sm:grid-cols-[7.5rem_minmax(0,1fr)_2.5rem] sm:items-center"
                     >
                       {image ? (
                         <span className="relative hidden aspect-[4/3] overflow-hidden border border-border bg-white sm:block">
@@ -97,7 +97,7 @@ export function Projects() {
                     </DialogHeader>
 
                     <div className="py-3">
-                      <div className="border-y border-border py-4">
+                      <div className="py-2">
                         <p className="text-xs text-muted-foreground">Impact</p>
                         <p className="mt-1 text-sm font-medium text-foreground">{project.impact}</p>
                       </div>
@@ -109,7 +109,7 @@ export function Projects() {
                         </p>
                       </div>
 
-                      <div className="mt-6 border-l border-brand pl-4">
+                      <div className="mt-6">
                         <h4 className="text-sm font-semibold text-foreground">My contribution</h4>
                         <p className="mt-2 text-sm leading-6 text-muted-foreground">
                           {project.contribution}

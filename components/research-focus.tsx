@@ -24,9 +24,9 @@ export function ResearchFocus() {
               </p>
             </div>
 
-            <ol className="border-t border-border">
+            <ol className="space-y-6">
               {profile.research.focusAreas.map((area, index) => (
-                <li key={area} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-3 border-b border-border py-4">
+                <li key={area} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-3">
                   <span className="text-xs text-brand">
                     {String(index + 1).padStart(2, "0")}
                   </span>

@@ -21,11 +21,11 @@ export function Experience() {
         />
 
         <AnimatedSection>
-          <div className="border-t border-border">
+          <div className="space-y-14 sm:space-y-16">
             {experiences.map((experience) => (
               <article
                 key={experience.id}
-                className="grid gap-5 border-b border-border py-7 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-10 sm:py-8"
+                className="grid gap-5 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-10"
               >
                 <div className="text-sm text-muted-foreground">
                   <p>{formatExperiencePeriod(experience)}</p>
@@ -67,11 +67,11 @@ export function Experience() {
             <h3 className="font-display text-2xl font-semibold text-foreground">Education</h3>
             <span className="text-xs text-muted-foreground">{profile.education.length} programs</span>
           </div>
-          <div className="border-t border-border">
+          <div className="space-y-10 sm:space-y-12">
             {profile.education.map((education) => (
               <article
                 key={education.school}
-                className="grid gap-4 border-b border-border py-6 sm:grid-cols-[minmax(0,1fr)_10rem] sm:gap-8"
+                className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_10rem] sm:gap-8"
               >
                 <div>
                   <h4 className="text-base font-semibold leading-6 text-foreground">

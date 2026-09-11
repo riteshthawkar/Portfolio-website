@@ -50,11 +50,11 @@ export function Skills() {
         />
 
         <AnimatedSection>
-          <div className="border-t border-border">
+          <div className="space-y-14 sm:space-y-16">
             {profile.skills.map((group, groupIndex) => (
               <article
                 key={group.category}
-                className="grid gap-5 border-b border-border py-7 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-10 sm:py-8"
+                className="grid gap-5 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-10"
               >
                 <div>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
