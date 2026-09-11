@@ -98,16 +98,19 @@ const education = profile.education
   .join("\n")
 
 function publicationVenue(publication) {
+  const presentation =
+    publication.status === "Spotlight" ? " \\textbf{Spotlight presentation}." : ""
+
   if (/^arXiv\b/i.test(publication.tag)) {
-    return "\\textit{arXiv preprint}."
+    return "\\textit{arXiv preprint}." + presentation
   }
 
   const aclFindings = publication.tag.match(/^ACL Findings\s+(\d{4})$/i)
   if (aclFindings) {
-    return "In \\textit{Findings of ACL " + aclFindings[1] + "}."
+    return "In \\textit{Findings of ACL " + aclFindings[1] + "}." + presentation
   }
 
-  return "In \\textit{" + latex(publication.tag) + "}."
+  return "In \\textit{" + latex(publication.tag) + "}." + presentation
 }
 
 function publicationEntries(items) {

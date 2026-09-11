@@ -50,7 +50,7 @@ Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases, Python, TypeScript,
 
 | Work | Status | Links |
 | --- | --- | --- |
-| How Good are Foundation Models in Longitudinal MRI Disease Progression Reasoning? | arXiv 2026 | [Paper](https://arxiv.org/abs/2608.13309) |
+| How Good are Foundation Models in Longitudinal MRI Disease Progression Reasoning? | MICCAI 2026 · Spotlight | [Paper](https://arxiv.org/abs/2608.13309), [Project](https://wafaalghallabi.github.io/Time-Aware-MRI/), [Code](https://github.com/wafaAlghallabi/Time-Aware-MRI) |
 | Perception Before Supervision: Self-Contained Visual Distillation from Counterfactual Blind Spots | arXiv 2026 | [Paper](https://arxiv.org/abs/2608.09931) |
 | Ask, Solve, Generate: Self-Evolving Unified Multimodal Understanding and Generation via Self-Consistency Rewards | arXiv 2026 | [Paper](https://arxiv.org/abs/2606.27376), [Project](https://mbzuai-oryx.github.io/Ask-Solve-Generate/), [Code](https://github.com/mbzuai-oryx/Ask-Solve-Generate), [Models](https://huggingface.co/collections/Ritesh-hf/ask-solve-generate-paper-models) |
 | Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models | ECCV 2026 | [Paper](https://doi.org/10.1007/978-3-032-37464-6_3), [Project](https://mbzuai-oryx.github.io/VISE/), [Code](https://github.com/mbzuai-oryx/VISE), [Preprint](https://arxiv.org/abs/2606.27373) |

@@ -215,14 +215,23 @@
   "publications": [
     {
       "id": "arxiv-2608.13309",
-      "tag": "arXiv 2026",
+      "tag": "MICCAI 2026",
       "title": "How Good are Foundation Models in Longitudinal MRI Disease Progression Reasoning?",
       "authors": "Wafa Al Ghallabi, Ritesh Thawkar, Sara Ghaboura, Omkar Thawakar, Numan Saeed, Dana Al Nuaimi, Ajnas Alkatheeri, Salman Khan, Fahad Shahbaz Khan",
-      "type": "Preprint",
-      "status": null,
+      "type": "Conference",
+      "status": "Spotlight",
       "link": "https://arxiv.org/abs/2608.13309",
-      "linkLabel": "View Preprint",
-      "resources": [],
+      "linkLabel": "View Paper",
+      "resources": [
+        {
+          "label": "Project",
+          "href": "https://wafaalghallabi.github.io/Time-Aware-MRI/"
+        },
+        {
+          "label": "Code",
+          "href": "https://github.com/wafaAlghallabi/Time-Aware-MRI"
+        }
+      ],
       "abstract": "Magnetic Resonance Imaging (MRI) interpretation is fundamental to clinical decision-making, requiring radiologists to integrate multi-view anatomical planes across sequential timepoints while precisely localizing interval changes. However, existing vision-language benchmarks remain confined to single-timepoint, single-view interpretation, failing to capture the temporal-spatial reasoning essential to radiologic practice. We introduce the Time-Aware Multi-View MRI Benchmark, an evaluation framework unifying multi-view anatomical input, temporal reasoning across longitudinal scans, and structured localization guidance. The benchmark comprises 3,920 expert-verified question-answer pairs derived from 890 patients across over 3,200 longitudinal MRI timepoints, drawn from seven clinical cohorts covering glioblastoma, neurodegeneration, vestibular schwannoma, and brain metastases, in open-ended, multiple-choice, and binary formats, requiring models to identify anatomical regions of maximal change, characterize progression across sequences and views, and provide structured guidance specifying boundaries, imaging features, and confounders. Experiments across 16 vision-language models reveal moderate temporal alignment but systematic failure on change direction recognition and volumetric quantification, while multi-view inputs improve spatial localization yet degrade temporal reasoning in compact architectures. Our benchmark provides a systematic framework for evaluating progression tracking, interval change localization, and temporal ordering, which are essential for clinical deployment. Code, evaluation splits, and the dataset are available at: https://github.com/wafaAlghallabi/Time-Aware-MRI.",
       "sortDate": "2026-08-13",
       "sourceIds": {

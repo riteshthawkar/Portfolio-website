@@ -103,6 +103,9 @@ const publications = profile.publications
       publication.title.replaceAll("|", "\\|") +
       " | " +
       publication.tag +
+      (publication.status && publication.status !== "Accepted"
+        ? " · " + publication.status
+        : "") +
       " | " +
       markdownLinks(publication) +
       " |",
