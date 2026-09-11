@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo, useState } from "react"
-import { ArrowUpRight, ChevronDown, Search, X } from "lucide-react"
+import { ArrowUpRight, ChevronDown } from "lucide-react"
 
 import { profile, type Publication } from "@/lib/profile"
 import { AnimatedSection } from "./animated-section"
@@ -24,10 +24,6 @@ function highlightName(authors: string) {
       {parts.slice(1).join(profile.person.name)}
     </span>
   )
-}
-
-function isPreprint(publication: Publication) {
-  return /^arXiv\b/i.test(publication.tag)
 }
 
 function PublicationItem({
@@ -135,43 +131,9 @@ export function Publications() {
         .toSorted((a, b) => b.sortDate.localeCompare(a.sortDate)),
     [],
   )
-  const years = useMemo(
-    () => [...new Set(publications.map((publication) => publication.sortDate.slice(0, 4)))],
-    [publications],
-  )
   const [visibleCount, setVisibleCount] = useState(INITIAL_PUBLICATION_COUNT)
-  const [query, setQuery] = useState("")
-  const [year, setYear] = useState("all")
-  const [category, setCategory] = useState("all")
-
-  const filteredPublications = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase()
-
-    return publications.filter((publication) => {
-      const matchesQuery =
-        normalizedQuery.length === 0 ||
-        publication.title.toLowerCase().includes(normalizedQuery) ||
-        publication.authors.toLowerCase().includes(normalizedQuery) ||
-        publication.tag.toLowerCase().includes(normalizedQuery)
-      const matchesYear = year === "all" || publication.sortDate.startsWith(year)
-      const matchesCategory =
-        category === "all" ||
-        (category === "preprint" ? isPreprint(publication) : !isPreprint(publication))
-
-      return matchesQuery && matchesYear && matchesCategory
-    })
-  }, [category, publications, query, year])
-
-  const displayedPublications = filteredPublications.slice(0, visibleCount)
-  const hasActiveFilters = query.length > 0 || year !== "all" || category !== "all"
-  const remainingPublicationCount = filteredPublications.length - displayedPublications.length
-
-  function clearFilters() {
-    setQuery("")
-    setYear("all")
-    setCategory("all")
-    setVisibleCount(INITIAL_PUBLICATION_COUNT)
-  }
+  const displayedPublications = publications.slice(0, visibleCount)
+  const remainingPublicationCount = publications.length - displayedPublications.length
 
   return (
     <section id="publications" className="site-section">
@@ -197,92 +159,14 @@ export function Publications() {
         />
 
         <AnimatedSection>
-          <div>
-            <div className="flex justify-end">
-              <p className="text-xs text-muted-foreground" aria-live="polite">
-                Showing {displayedPublications.length} of {filteredPublications.length}
-              </p>
-            </div>
-
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_8rem_9rem_auto]">
-              <label className="relative block sm:col-span-2 lg:col-span-1">
-                <span className="sr-only">Search publications</span>
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <input
-                  type="search"
-                  value={query}
-                  onChange={(event) => {
-                    setQuery(event.target.value)
-                    setVisibleCount(INITIAL_PUBLICATION_COUNT)
-                  }}
-                  placeholder="Search publications"
-                  className="h-10 w-full border border-border bg-transparent pl-9 pr-3 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-brand"
-                />
-              </label>
-
-              <label>
-                <span className="sr-only">Filter by year</span>
-                <select
-                  value={year}
-                  onChange={(event) => {
-                    setYear(event.target.value)
-                    setVisibleCount(INITIAL_PUBLICATION_COUNT)
-                  }}
-                  className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none focus:border-brand"
-                >
-                  <option value="all">All years</option>
-                  {years.map((publicationYear) => (
-                    <option key={publicationYear} value={publicationYear}>
-                      {publicationYear}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label>
-                <span className="sr-only">Filter by publication type</span>
-                <select
-                  value={category}
-                  onChange={(event) => {
-                    setCategory(event.target.value)
-                    setVisibleCount(INITIAL_PUBLICATION_COUNT)
-                  }}
-                  className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none focus:border-brand"
-                >
-                  <option value="all">All types</option>
-                  <option value="peer-reviewed">Peer reviewed</option>
-                  <option value="preprint">Preprints</option>
-                </select>
-              </label>
-
-              <button
-                type="button"
-                onClick={clearFilters}
-                disabled={!hasActiveFilters}
-                className="inline-flex h-10 items-center justify-center gap-2 border border-border px-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                <X className="h-4 w-4" />
-                Clear
-              </button>
-            </div>
-          </div>
+          <p className="text-right text-xs text-muted-foreground" aria-live="polite">
+            Showing {displayedPublications.length} of {publications.length}
+          </p>
 
           <div id="publication-list" className="mt-12 space-y-12 sm:mt-16 sm:space-y-16">
             {displayedPublications.map((publication, index) => (
               <PublicationItem key={publication.id} publication={publication} index={index} />
             ))}
-            {displayedPublications.length === 0 ? (
-              <div className="py-10 text-center">
-                <p className="text-sm font-medium text-foreground">No publications match these filters.</p>
-                <button
-                  type="button"
-                  onClick={clearFilters}
-                  className="mt-3 text-sm font-medium text-brand underline underline-offset-4"
-                >
-                  Clear filters
-                </button>
-              </div>
-            ) : null}
             {remainingPublicationCount > 0 ? (
               <div className="flex justify-center pt-2">
                 <button
@@ -291,7 +175,7 @@ export function Publications() {
                   aria-label={`Show ${Math.min(PUBLICATION_PAGE_SIZE, remainingPublicationCount)} more publications`}
                   onClick={() =>
                     setVisibleCount((count) =>
-                      Math.min(count + PUBLICATION_PAGE_SIZE, filteredPublications.length),
+                      Math.min(count + PUBLICATION_PAGE_SIZE, publications.length),
                     )
                   }
                   className="inline-flex h-10 items-center gap-2 border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
