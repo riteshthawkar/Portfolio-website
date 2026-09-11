@@ -53,7 +53,7 @@ Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases, Python, TypeScript,
 | How Good are Foundation Models in Longitudinal MRI Disease Progression Reasoning? | arXiv 2026 | [Paper](https://arxiv.org/abs/2608.13309) |
 | Perception Before Supervision: Self-Contained Visual Distillation from Counterfactual Blind Spots | arXiv 2026 | [Paper](https://arxiv.org/abs/2608.09931) |
 | Ask, Solve, Generate: Self-Evolving Unified Multimodal Understanding and Generation via Self-Consistency Rewards | arXiv 2026 | [Paper](https://arxiv.org/abs/2606.27376), [Project](https://mbzuai-oryx.github.io/Ask-Solve-Generate/), [Code](https://github.com/mbzuai-oryx/Ask-Solve-Generate), [Models](https://huggingface.co/collections/Ritesh-hf/ask-solve-generate-paper-models) |
-| Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models | arXiv 2026 | [Paper](https://arxiv.org/abs/2606.27373), [Project](https://mbzuai-oryx.github.io/VISE) |
+| Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models | ECCV 2026 | [Paper](https://doi.org/10.1007/978-3-032-37464-6_3), [Project](https://mbzuai-oryx.github.io/VISE/), [Code](https://github.com/mbzuai-oryx/VISE), [Preprint](https://arxiv.org/abs/2606.27373) |
 | A Multi-Agent Diffusion Approach for MRI Anomaly Segmentation via Modality-Specific LoRA Specialization | WACV 2026 | [Paper](https://doi.org/10.1109/wacv61042.2026.00021) |
 | Mobile-O: Unified Multimodal Understanding and Generation on Mobile Device | arXiv 2026 | [Paper](https://arxiv.org/abs/2602.20161), [Project](https://amshaker.github.io/Mobile-O/), [Code](https://github.com/Amshaker/Mobile-O) |
 | EvoLMM: Self-Evolving Large Multimodal Models with Continuous Rewards | arXiv 2025 | [Paper](https://arxiv.org/abs/2511.16672), [Project](https://mbzuai-oryx.github.io/EvoLMM/), [Code](https://github.com/mbzuai-oryx/EvoLMM), [Models](https://huggingface.co/omkarthawakar/EvoLMM) |
@@ -93,4 +93,4 @@ Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases, Python, TypeScript,
 
 My current interests center on multimodal models that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.
 
-<sub>Profile content last updated 2026-09-10.</sub>
+<sub>Profile content last updated 2026-09-11.</sub>

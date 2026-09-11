@@ -27,10 +27,6 @@ function isPreprint(publication: Publication) {
   return /^arXiv\b/i.test(publication.tag)
 }
 
-function isFirstAuthor(publication: Publication) {
-  return publication.authors.split(",")[0]?.trim() === profile.person.name
-}
-
 function PublicationItem({
   publication,
   index,
@@ -144,7 +140,6 @@ export function Publications() {
   const [query, setQuery] = useState("")
   const [year, setYear] = useState("all")
   const [category, setCategory] = useState("all")
-  const [firstAuthorOnly, setFirstAuthorOnly] = useState(false)
 
   const filteredPublications = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -159,22 +154,19 @@ export function Publications() {
       const matchesCategory =
         category === "all" ||
         (category === "preprint" ? isPreprint(publication) : !isPreprint(publication))
-      const matchesAuthorship = !firstAuthorOnly || isFirstAuthor(publication)
 
-      return matchesQuery && matchesYear && matchesCategory && matchesAuthorship
+      return matchesQuery && matchesYear && matchesCategory
     })
-  }, [category, firstAuthorOnly, publications, query, year])
+  }, [category, publications, query, year])
 
   const displayedPublications =
     view === "latest" ? publications.slice(0, 5) : filteredPublications
-  const hasActiveFilters =
-    query.length > 0 || year !== "all" || category !== "all" || firstAuthorOnly
+  const hasActiveFilters = query.length > 0 || year !== "all" || category !== "all"
 
   function clearFilters() {
     setQuery("")
     setYear("all")
     setCategory("all")
-    setFirstAuthorOnly(false)
   }
 
   return (
@@ -222,7 +214,7 @@ export function Publications() {
             </div>
 
             {view === "all" ? (
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_8rem_9rem_auto_auto]">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_8rem_9rem_auto]">
                 <label className="relative block sm:col-span-2 lg:col-span-1">
                   <span className="sr-only">Search publications</span>
                   <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -263,19 +255,6 @@ export function Publications() {
                     <option value="preprint">Preprints</option>
                   </select>
                 </label>
-
-                <button
-                  type="button"
-                  aria-pressed={firstAuthorOnly}
-                  onClick={() => setFirstAuthorOnly((active) => !active)}
-                  className={`h-10 whitespace-nowrap border px-3 text-sm font-medium transition-colors ${
-                    firstAuthorOnly
-                      ? "border-brand bg-brand-muted text-brand"
-                      : "border-border text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  First author
-                </button>
 
                 <button
                   type="button"

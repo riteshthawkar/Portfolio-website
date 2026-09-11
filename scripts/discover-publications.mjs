@@ -320,7 +320,7 @@ function publicationFromRecord(record) {
     title: record.title,
     authors: record.authors.join(", "),
     type: isPreprint ? "Preprint" : "Conference",
-    status: record.authors[0] === profile.person.name ? "First Author" : null,
+    status: null,
     link: record.arxiv
       ? "https://arxiv.org/abs/" + record.arxiv
       : "https://doi.org/" + record.doi,
