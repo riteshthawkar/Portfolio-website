@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Download, MapPin } from "lucide-react"
+import { ArrowUpRight, Download, MapPin } from "lucide-react"
 
 import { profile } from "@/lib/profile"
 
@@ -6,20 +6,6 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
 const [institutionPrefix, institutionSuffix] = profile.person.hero[1].split(
   profile.person.institution.shortName,
 )
-const visiblePublications = profile.publications.filter(
-  (publication) => publication.includeInProfile,
-)
-const firstAuthorPublications = visiblePublications.filter(
-  (publication) => publication.authors.split(",")[0]?.trim() === profile.person.name,
-)
-const heroMetrics = [
-  { value: visiblePublications.length, label: "Publications" },
-  { value: firstAuthorPublications.length, label: "First-author work" },
-  {
-    value: profile.projects.filter((project) => project.cvFeatured).length,
-    label: "Deployed systems",
-  },
-]
 
 export function Hero() {
   return (
@@ -88,29 +74,6 @@ export function Hero() {
           </div>
         </div>
 
-        <dl className="hero-reveal mt-14 grid grid-cols-3 gap-6 [animation-delay:440ms] sm:mt-20 sm:gap-12">
-          {heroMetrics.map((metric) => (
-            <div
-              key={metric.label}
-              className="min-w-0"
-            >
-              <dd className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
-                {metric.value}
-              </dd>
-              <dt className="mt-1 text-[11px] leading-4 text-muted-foreground sm:text-xs">
-                {metric.label}
-              </dt>
-            </div>
-          ))}
-        </dl>
-
-        <a
-          href="#focus"
-          className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Research direction
-          <ArrowDown className="h-4 w-4" />
-        </a>
       </div>
     </section>
   )
