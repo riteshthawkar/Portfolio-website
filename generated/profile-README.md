@@ -27,7 +27,7 @@ Currently pursuing an MSc in Computer Vision at MBZUAI, where I work on VLM reas
 ## Current Focus
 
 - Self-evolving multimodal understanding and generation from unlabeled visual data.
-- Grounded VideoQA with budget-aware evidence acquisition.
+- Unified understanding and generation models.
 - LLM and VLM evaluation for reasoning, retrieval, grounding, and generation.
 - Applied AI systems using RAG, agents, dashboards, and domain assistants.
 
@@ -86,7 +86,7 @@ Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases, Python, TypeScript,
 
 ## Open To
 
-- Research collaboration on multimodal reasoning, self-evolving VLMs/MLLMs, grounded VideoQA, and evaluation.
+- Research collaboration on multimodal reasoning, self-evolving VLMs/MLLMs, unified understanding and generation models, and evaluation.
 - Applied AI work around RAG systems, LLM agents, retrieval pipelines, and production ML backends.
 
 ## What I Am Building Toward
