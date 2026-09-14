@@ -26,22 +26,12 @@ function highlightName(authors: string) {
   )
 }
 
-function PublicationItem({
-  publication,
-  index,
-}: {
-  publication: Publication
-  index: number
-}) {
+function PublicationItem({ publication }: { publication: Publication }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <article className="group [content-visibility:auto] [contain-intrinsic-size:auto_16rem]">
-      <div className="grid gap-4 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-5">
-        <span className="text-xs text-muted-foreground">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-5">
         <div className="min-w-0">
           <div className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
             <span className="font-medium text-brand">{publication.tag}</span>
@@ -143,36 +133,29 @@ export function Publications() {
           title="Publications"
           description="Peer-reviewed work and preprints, ordered by release date."
           aside={
-            <div className="flex flex-wrap items-center gap-3 sm:justify-end">
-              <span>{publications.length} papers</span>
-              <a
-                href={profile.links.scholar}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-10 items-center gap-2 border border-border px-3 font-medium text-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-              >
-                Google Scholar
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </div>
+            <a
+              href={profile.links.scholar}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 items-center gap-2 border border-border px-3 font-medium text-foreground transition-colors hover:border-brand hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            >
+              Google Scholar
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           }
         />
 
         <AnimatedSection>
-          <p className="text-right text-xs text-muted-foreground" aria-live="polite">
-            Showing {displayedPublications.length} of {publications.length}
-          </p>
-
-          <div id="publication-list" className="mt-12 space-y-12 sm:mt-16 sm:space-y-16">
-            {displayedPublications.map((publication, index) => (
-              <PublicationItem key={publication.id} publication={publication} index={index} />
+          <div id="publication-list" className="space-y-12 sm:space-y-16">
+            {displayedPublications.map((publication) => (
+              <PublicationItem key={publication.id} publication={publication} />
             ))}
             {remainingPublicationCount > 0 ? (
               <div className="flex justify-center pt-2">
                 <button
                   type="button"
                   aria-controls="publication-list"
-                  aria-label={`Show ${Math.min(PUBLICATION_PAGE_SIZE, remainingPublicationCount)} more publications`}
+                  aria-label="Show more publications"
                   onClick={() =>
                     setVisibleCount((count) =>
                       Math.min(count + PUBLICATION_PAGE_SIZE, publications.length),

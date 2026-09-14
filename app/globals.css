@@ -131,6 +131,7 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    font-weight: 500;
     min-height: 100vh;
     overflow-x: hidden;
   }
