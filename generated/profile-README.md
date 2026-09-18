@@ -44,7 +44,7 @@ Currently pursuing an MSc in Computer Vision at MBZUAI, where I work on VLM reas
   <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logoColor=white&logo=postgresql">
 </p>
 
-Agentic RAG, VLMs / MLLMs, LLM Evaluation, Vector Databases, Python, TypeScript, JavaScript, C, PyTorch, Transformers, TensorFlow, Scikit-learn, NumPy, Pandas, FastAPI, Flask, Django, React, Tailwind CSS, PostgreSQL, MySQL, SQLite, AWS, Azure, Git.
+VLMs / MLLMs, Multimodal Benchmarking, Benchmark Design, Capability Analysis, Error Analysis, Agentic RAG, Tool-Using Agents, Retrieval, Vector Databases, Python, TypeScript, JavaScript, C, PyTorch, Transformers, TensorFlow, Scikit-learn, Evaluation Pipelines, Experiment Tracking, LaTeX, Git, Docker, FastAPI, Flask, Django, React, PostgreSQL, SQLite, AWS, Azure, GitHub Actions.
 
 ## Publications
 

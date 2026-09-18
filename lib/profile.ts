@@ -84,7 +84,7 @@ export interface ProfileData {
   }
   cv: {
     languages: string[]
-    interests: string[]
+    researchService: string[]
   }
   research: {
     narrative: string

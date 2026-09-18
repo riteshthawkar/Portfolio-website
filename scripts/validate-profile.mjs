@@ -40,8 +40,7 @@ const profileSchema = z.object({
   }),
   cv: z.object({
     languages: z.array(z.string().min(2)).min(1),
-    interests: z.array(z.string().min(2)).min(1),
-    references: z.string().min(10),
+    researchService: z.array(z.string().min(3)).min(1),
   }),
   research: z.object({
     narrative: z.string().min(40),

@@ -14,7 +14,7 @@
       "shortName": "MBZUAI",
       "url": "https://mbzuai.ac.ae"
     },
-    "summary": "Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models.",
+    "summary": "Multimodal AI researcher developing self-evolving vision-language models and unified systems for understanding and generation. Research spans multimodal reasoning, agentic RAG, retrieval, and applied LLM systems.",
     "hero": [
       "I build multimodal AI systems that move between research prototypes and production-scale agentic applications.",
       "Currently pursuing an MSc in Computer Vision at MBZUAI, where I work on VLM reasoning, self-evolving LMMs, and retrieval-backed AI agents.",
@@ -41,12 +41,9 @@
       "Hindi (Advanced)",
       "Marathi (Advanced)"
     ],
-    "interests": [
-      "Reading",
-      "Music",
-      "Sports (Cricket, Badminton)"
-    ],
-    "references": "References will be provided upon request."
+    "researchService": [
+      "Reviewer, ACCV 2026"
+    ]
   },
   "research": {
     "narrative": "My current interests center on multimodal models that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.",
@@ -71,21 +68,48 @@
   },
   "skills": [
     {
-      "category": "AI Systems",
-      "summary": "Research workflows for multimodal agents, retrieval, and model evaluation.",
+      "category": "AI Research & Evaluation",
+      "summary": "Methods for studying multimodal capabilities, limitations, and reasoning behavior.",
       "lead": true,
+      "skills": [
+        {
+          "name": "VLMs / MLLMs",
+          "icon": "brain"
+        },
+        {
+          "name": "Multimodal Benchmarking",
+          "icon": "chart"
+        },
+        {
+          "name": "Benchmark Design",
+          "icon": "boxes"
+        },
+        {
+          "name": "Capability Analysis",
+          "icon": "chart"
+        },
+        {
+          "name": "Error Analysis",
+          "icon": "chart"
+        }
+      ]
+    },
+    {
+      "category": "LLM Systems",
+      "summary": "Retrieval-grounded and tool-using language model systems for applied AI workflows.",
+      "lead": false,
       "skills": [
         {
           "name": "Agentic RAG",
           "icon": "brain"
         },
         {
-          "name": "VLMs / MLLMs",
-          "icon": "cpu"
+          "name": "Tool-Using Agents",
+          "icon": "zap"
         },
         {
-          "name": "LLM Evaluation",
-          "icon": "chart"
+          "name": "Retrieval",
+          "icon": "database"
         },
         {
           "name": "Vector Databases",
@@ -118,7 +142,7 @@
     },
     {
       "category": "ML / Deep Learning",
-      "summary": "Training, experimentation, analysis, and numerical computing stack.",
+      "summary": "Model development and experimentation across vision and language tasks.",
       "lead": false,
       "skills": [
         {
@@ -136,20 +160,39 @@
         {
           "name": "Scikit-learn",
           "icon": "chart"
-        },
-        {
-          "name": "NumPy",
-          "icon": "boxes"
-        },
-        {
-          "name": "Pandas",
-          "icon": "zap"
         }
       ]
     },
     {
-      "category": "Web Technologies",
-      "summary": "Interfaces and APIs for applied AI products and research demos.",
+      "category": "Research Engineering",
+      "summary": "Tools for repeatable experimentation, evaluation, documentation, and delivery.",
+      "lead": false,
+      "skills": [
+        {
+          "name": "Evaluation Pipelines",
+          "icon": "chart"
+        },
+        {
+          "name": "Experiment Tracking",
+          "icon": "chart"
+        },
+        {
+          "name": "LaTeX",
+          "icon": "fileCode"
+        },
+        {
+          "name": "Git",
+          "icon": "gitBranch"
+        },
+        {
+          "name": "Docker",
+          "icon": "boxes"
+        }
+      ]
+    },
+    {
+      "category": "Web & Data",
+      "summary": "Application frameworks and data stores for research tools and AI products.",
       "lead": false,
       "skills": [
         {
@@ -169,22 +212,7 @@
           "icon": "layout"
         },
         {
-          "name": "Tailwind CSS",
-          "icon": "layout"
-        }
-      ]
-    },
-    {
-      "category": "Databases",
-      "summary": "Relational and vector storage for applications, analytics, and retrieval.",
-      "lead": false,
-      "skills": [
-        {
           "name": "PostgreSQL",
-          "icon": "database"
-        },
-        {
-          "name": "MySQL",
           "icon": "database"
         },
         {
@@ -194,8 +222,8 @@
       ]
     },
     {
-      "category": "Cloud & DevOps",
-      "summary": "Deployment, versioning, and infrastructure for reliable delivery.",
+      "category": "Cloud",
+      "summary": "Cloud platforms and automation for deploying research and production systems.",
       "lead": false,
       "skills": [
         {
@@ -207,7 +235,7 @@
           "icon": "cloud"
         },
         {
-          "name": "Git",
+          "name": "GitHub Actions",
           "icon": "gitBranch"
         }
       ]
