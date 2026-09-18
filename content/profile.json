@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "lastUpdated": "2026-09-14",
+  "lastUpdated": "2026-09-18",
   "person": {
     "name": "Ritesh Thawkar",
     "initials": "RT",
@@ -45,7 +45,8 @@
       "Reading",
       "Music",
       "Sports (Cricket, Badminton)"
-    ]
+    ],
+    "references": "References will be provided upon request."
   },
   "research": {
     "narrative": "My current interests center on multimodal models that improve from their own interaction traces: asking better questions, selecting reliable evidence, generating useful supervision, and evaluating the loop with grounded metrics.",
@@ -880,10 +881,10 @@
       "startDate": "2024-09",
       "endDate": null,
       "highlights": [
-        "Developing Novel Visual Reasoning Benchmarks to stress-test the sequential logic capabilities of VLLMs.",
-        "Pioneering Composed Video Retrieval techniques utilizing dense video descriptions for fine-grained understanding.",
-        "Engineered core document retrieval systems and scalable web agents powering the enterprise Lawa.AI platform.",
-        "Built and optimized the AI infrastructure and retrieval backends for the Nutrigenics.care startup platform."
+        "Engineered visual-reasoning benchmarks for VLMs/MLLMs, evaluating sequential logic, grounding, and multimodal reasoning across research tasks.",
+        "Developed composed-video-retrieval methods using dense video descriptions and multimodal embeddings for fine-grained retrieval and temporal understanding.",
+        "Deployed document-retrieval pipelines and scalable LLM web agents for Lawa.AI using FastAPI, vector databases, and retrieval-augmented generation.",
+        "Optimized Django and PostgreSQL AI infrastructure for Nutrigenics.care, integrating image-aware LLM recommendations into personalized nutrition workflows."
       ],
       "includeInPortfolio": true,
       "includeInCv": true
@@ -897,9 +898,9 @@
       "startDate": "2024-02",
       "endDate": "2024-05",
       "highlights": [
-        "Architected robust data-ingestion pipelines tailored for tracking small to medium business operations.",
-        "Developed ML-driven analytics systems to automate the extraction of actionable business insights.",
-        "Optimized and streamlined enterprise data processing workflows, reducing overall processing time by 20%."
+        "Engineered data-ingestion pipelines for small and medium business operations, supporting reliable multi-source operational tracking.",
+        "Automated business-insight extraction with ML-driven analytics workflows, converting operational data into decision-ready outputs.",
+        "Optimized enterprise data-processing workflows, reducing end-to-end processing time by 20%."
       ],
       "includeInPortfolio": true,
       "includeInCv": true
@@ -911,14 +912,29 @@
       "school": "MBZUAI",
       "location": "Abu Dhabi, UAE",
       "period": "Aug 2024 - Present",
-      "gpa": "3.55 / 4.00"
+      "gpa": "3.55 / 4.00",
+      "keyCourses": [
+        "Machine Learning with Python",
+        "Introduction to Deep Learning",
+        "Human and Computer Vision",
+        "Probabilistic and Statistical Inference",
+        "Mathematical Foundations of Artificial Intelligence"
+      ]
     },
     {
       "degree": "BTech Computer Science & Engineering",
       "school": "Dr. Babasaheb Ambedkar Technological University",
       "location": "Lonere, India",
       "period": "Feb 2021 - May 2024",
-      "gpa": "8.51 / 10.00"
+      "gpa": "8.51 / 10.00",
+      "keyCourses": [
+        "Data Structures",
+        "Design & Analysis of Algorithms",
+        "Database Systems",
+        "Machine Learning",
+        "Artificial Intelligence",
+        "Cloud Computing"
+      ]
     }
   ]
 }

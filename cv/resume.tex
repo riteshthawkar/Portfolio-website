@@ -10,10 +10,16 @@
 \usepackage{titlesec}
 \usepackage{needspace}
 \usepackage{microtype}
+\usepackage{fancyhdr}
 
 \definecolor{linkblue}{HTML}{000099}
 \hypersetup{colorlinks=true,urlcolor=linkblue,linkcolor=linkblue}
-\pagestyle{empty}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\small Ritesh Thawkar \enspace | \enspace Page \thepage}
+\setlength{\footskip}{14pt}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{0pt}
@@ -26,6 +32,7 @@
 \titlespacing*{\section}{0pt}{0.7em}{0.45em}
 
 \begin{document}
+\thispagestyle{empty}
 
 \begin{center}
   {\Huge\bfseries Ritesh Thawkar}\\[2pt]
@@ -34,7 +41,7 @@
 \end{center}
 \vspace{-0.45em}
 
-\section*{Research Profile}
+\section*{Professional Summary}
 Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with experience deploying real-world LLM applications and conducting research in self-evolving LLMs/VLMs and unified understanding-generation models.
 
 \section*{Education}
@@ -44,14 +51,16 @@ Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with exper
     \textit{Master of Science in Computer Vision} & Abu Dhabi, UAE
   \end{tabular*}
   \begin{itemize}
-    \item GPA: 3.55/4.00
+    \item \textbf{GPA:} 3.55/4.00
+    \item \textbf{Relevant Coursework:} Machine Learning with Python, Introduction to Deep Learning, Human and Computer Vision, Probabilistic and Statistical Inference, Mathematical Foundations of Artificial Intelligence
   \end{itemize}
   \item \begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lr}
     \textbf{Dr. Babasaheb Ambedkar Technological University} & \textit{Feb 2021 - May 2024} \\
     \textit{Bachelor of Technology in Computer Science and Engineering} & Lonere, India
   \end{tabular*}
   \begin{itemize}
-    \item GPA: 8.51/10.00
+    \item \textbf{GPA:} 8.51/10.00
+    \item \textbf{Relevant Coursework:} Data Structures, Design \& Analysis of Algorithms, Database Systems, Machine Learning, Artificial Intelligence, Cloud Computing
   \end{itemize}
 \end{itemize}
 
@@ -107,10 +116,10 @@ Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with exper
     \textit{Research Assistant} & Abu Dhabi, UAE
   \end{tabular*}
   \begin{itemize}
-    \item Developing Novel Visual Reasoning Benchmarks to stress-test the sequential logic capabilities of VLLMs.
-    \item Pioneering Composed Video Retrieval techniques utilizing dense video descriptions for fine-grained understanding.
-    \item Engineered core document retrieval systems and scalable web agents powering the enterprise Lawa.AI platform.
-    \item Built and optimized the AI infrastructure and retrieval backends for the Nutrigenics.care startup platform.
+    \item Engineered visual-reasoning benchmarks for VLMs/MLLMs, evaluating sequential logic, grounding, and multimodal reasoning across research tasks.
+    \item Developed composed-video-retrieval methods using dense video descriptions and multimodal embeddings for fine-grained retrieval and temporal understanding.
+    \item Deployed document-retrieval pipelines and scalable LLM web agents for Lawa.AI using FastAPI, vector databases, and retrieval-augmented generation.
+    \item Optimized Django and PostgreSQL AI infrastructure for Nutrigenics.care, integrating image-aware LLM recommendations into personalized nutrition workflows.
   \end{itemize}
   \par\Needspace{12\baselineskip}
   \item \begin{tabular*}{\linewidth}[t]{@{\extracolsep{\fill}}lr}
@@ -118,9 +127,9 @@ Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with exper
     \textit{Framework Engineer Intern} & Remote
   \end{tabular*}
   \begin{itemize}
-    \item Architected robust data-ingestion pipelines tailored for tracking small to medium business operations.
-    \item Developed ML-driven analytics systems to automate the extraction of actionable business insights.
-    \item Optimized and streamlined enterprise data processing workflows, reducing overall processing time by 20\%.
+    \item Engineered data-ingestion pipelines for small and medium business operations, supporting reliable multi-source operational tracking.
+    \item Automated business-insight extraction with ML-driven analytics workflows, converting operational data into decision-ready outputs.
+    \item Optimized enterprise data-processing workflows, reducing end-to-end processing time by 20\%.
   \end{itemize}
 \end{itemize}
 
@@ -173,6 +182,7 @@ Researcher focused on LLMs/VLMs, agentic RAG, and multimodal systems, with exper
 
 \section*{Additional Information}
 \textbf{Languages:} English (Intermediate), Hindi (Advanced), Marathi (Advanced)\\
-\textbf{Interests:} Reading, Music, Sports (Cricket, Badminton)
+\textbf{Interests:} Reading, Music, Sports (Cricket, Badminton)\\
+References will be provided upon request.
 
 \end{document}
