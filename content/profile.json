@@ -882,8 +882,8 @@
       "endDate": "2026-07",
       "highlights": [
         "Conducted a systematic evaluation of multimodal models through MS-VISTA, integrating two visual benchmarks and one reasoning-analysis study across perception, cognition, and spatial intelligence.",
-        "Built reproducible VLM/MLLM evaluation pipelines in Python and vLLM with BF16 multi-GPU inference, checkpointed execution, answer extraction, model identity validation, and run provenance.",
-        "Developed a research leaderboard using Flask, React/Vite, Tailwind, and Visx, including authentication, secure submissions, server-side scoring, private ground-truth handling, and auditable evidence retention."
+        "Developed reproducible VLM/MLLM evaluation pipelines covering model inference, answer extraction, experiment tracking, and comparative performance analysis.",
+        "Built a Flask and React research leaderboard with authenticated submissions, benchmark scoring, capability-level analysis, and auditable evaluation reports."
       ],
       "includeInPortfolio": true,
       "includeInCv": true
@@ -928,7 +928,7 @@
       "school": "MBZUAI",
       "location": "Abu Dhabi, UAE",
       "period": "Aug 2024 - Present",
-      "gpa": "3.55 / 4.00",
+      "gpa": "3.60 / 4.00",
       "keyCourses": [
         "Machine Learning with Python",
         "Introduction to Deep Learning",
