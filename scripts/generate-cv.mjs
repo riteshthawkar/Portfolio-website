@@ -231,7 +231,7 @@ const document = [
   "\\raggedbottom",
   "\\setlist[itemize,1]{label=\\textbullet,leftmargin=0.8em,labelsep=0.35em,itemsep=0.55em,topsep=0.25em,parsep=0pt,partopsep=0pt}",
   "\\setlist[itemize,2]{label=\\textopenbullet,leftmargin=1.15em,labelsep=0.35em,itemsep=0.28em,topsep=0.18em,parsep=0pt,partopsep=0pt}",
-  "\\setlist[description]{leftmargin=4.05em,labelwidth=3.35em,labelsep=0.6em,itemsep=0.55em,topsep=0.2em,parsep=0pt,partopsep=0pt}",
+  "\\setlist[description]{leftmargin=4.05em,labelwidth=3.35em,labelsep=0.6em,itemsep=0.35em,topsep=0.2em,parsep=0pt,partopsep=0pt}",
   "\\titleformat{\\section}{\\Large\\bfseries\\scshape}{}{0pt}{}[\\vspace{0.05em}\\titlerule]",
   "\\titlespacing*{\\section}{0pt}{0.7em}{0.45em}",
   "",
