@@ -155,7 +155,7 @@ const projects = profile.projects
   .filter((project) => project.cvFeatured)
   .map((project) =>
     [
-      "  \\par\\Needspace{11\\baselineskip}",
+      "  \\par\\Needspace{8\\baselineskip}",
       "  \\item \\textbf{" + latex(project.title) + ":}" + projectLink(project),
       "  \\textit{Tools: [" + latex(project.tools.join(", ")) + "]}",
       "  \\begin{itemize}",
