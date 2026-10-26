@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "lastUpdated": "2026-09-18",
+  "lastUpdated": "2026-10-26",
   "person": {
     "name": "Ritesh Thawkar",
     "initials": "RT",
@@ -243,6 +243,75 @@
   ],
   "publications": [
     {
+      "id": "arxiv-2610.12469",
+      "tag": "arXiv 2026",
+      "title": "Rubric-CEPR: Self-Evolving Image Editing via Reward-Verified Self-Distillation",
+      "authors": "Ritesh Thawkar, Shubham Patle, Shravan Venkatraman, Rao Muhammad Anwer",
+      "type": "Preprint",
+      "status": null,
+      "link": "https://arxiv.org/abs/2610.12469",
+      "linkLabel": "View Preprint",
+      "resources": [],
+      "abstract": "Instruction-guided image editors have become highly capable, yet improving them further still depends on human-edited training pairs or external reward models. Such supervision is costly to obtain and can reward plausible failures: a realistic output may leave the requested change undone or alter content that should be preserved. In this work, we strive to improve a pretrained image editor using only its own generations, without human-edited targets or an external training-time reward model. To this end, we propose a self-evolving framework, named Rubric-CEPR, that verifies the editor's own samples with its internal representations through a rubric-augmented Contrastive Edit-Preservation Reward (CEPR). A Planner proposes structured edit instructions from unlabeled images, the Editor samples multiple candidate edits, and a frozen Critic scores each candidate with decomposed rubric checks for edit realization, removal of the old state, and content preservation, using features already exposed by the editor. Non-compensatory gates reject infeasible candidates, and the best verified candidate is distilled into the editor through lightweight adapter training. On Qwen-Image-Edit, Rubric-CEPR improves ImgEdit from 4.36 to 4.60 (+5.5%), with a +24.9% gain on object isolation, and transfers to GEdit-Bench and Complex-Edit. The same procedure also improves Step1X-Edit by +7.8% on ImgEdit. We hope our approach will serve as a solid baseline for image editors that improve themselves from their own verified samples. Our code is publicly available at https://github.com/riteshthawkar/Rubric-CEPR",
+      "sortDate": "2026-10-08",
+      "sourceIds": {
+        "arxiv": "2610.12469",
+        "doi": "10.48550/arxiv.2610.12469",
+        "openAlex": "W7221100804",
+        "semanticScholar": "f03300cc389e009fe867a0fb23c89f7b0b1291c3",
+        "dblp": null
+      },
+      "includeInProfile": true,
+      "includeInCv": true,
+      "discoveredFrom": [
+        "OpenAlex",
+        "Semantic Scholar",
+        "arXiv"
+      ]
+    },
+    {
+      "id": "S3",
+      "tag": "ECCV 2026",
+      "title": "Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models",
+      "authors": "Shravan Venkatraman, Ritesh Thawkar, Omkar Thawakar, Rao Muhammad Anwer, Hisham Cholakkal, Salman Khan, Fahad Shahbaz Khan",
+      "type": "Conference",
+      "status": null,
+      "link": "https://doi.org/10.1007/978-3-032-37464-6_3",
+      "linkLabel": "View Paper",
+      "resources": [
+        {
+          "label": "Project",
+          "href": "https://mbzuai-oryx.github.io/VISE/"
+        },
+        {
+          "label": "Code",
+          "href": "https://github.com/mbzuai-oryx/VISE"
+        },
+        {
+          "label": "Preprint",
+          "href": "https://arxiv.org/abs/2606.27373"
+        }
+      ],
+      "abstract": "Recently, self-evolving large multimodal models (LMMs) have received attention for improving visual reasoning in a purely unsupervised setting. However, multi-role self-play and self-consistency reward schemes in existing self-evolving LMMs optimize answer agreement without ensuring the decoder attends to visual content, relying instead on statistical language priors to produce self consistent outputs. This leads to a persistent failure mode we term visual under-conditioning, where the decoder relies on language priors rather than the image during generation, manifesting as insufficient attention to visual tokens. As a result, current self-evolving LMMs struggle on vision--language understanding tasks such as image captioning and visual question answering. To address this, we propose VISE (Visual Invariance Self-Evolution), a purely unsupervised self-evolving framework that directly regularizes the model's visual conditioning policy through two complementary invariance-based rewards: a geometric invariance reward that enforces spatial consistency under known transformations, and a semantic invariance reward that penalizes evidence-agnostic generation by requiring the model to recognize the absence of evidence when predicted regions are perturbed. VISE operates within a single model without specialist roles, external reward models, or annotations, and is trained on raw unlabeled images. Experiments on 18 benchmarks demonstrate the efficacy of our approach. Using Qwen3-VL-2B as the base model, VISE achieves gains of $+16.85$ CIDEr on COCO and $+19.66$ CIDEr on TextCaps, reduces object hallucination by $5.0$ Chair-I points, and generalizes across four model families and scales. Our code and models are available at https://mbzuai-oryx.github.io/VISE",
+      "sortDate": "2026-09-11",
+      "sourceIds": {
+        "arxiv": "2606.27373",
+        "doi": "10.1007/978-3-032-37464-6_3",
+        "openAlex": "W7166183413",
+        "semanticScholar": "cdb8c3321bd295a78fd564631803600411f18b2c",
+        "dblp": null
+      },
+      "includeInProfile": true,
+      "includeInCv": true,
+      "discoveredFrom": [
+        "Crossref",
+        "OpenAlex",
+        "Semantic Scholar",
+        "arXiv",
+        "curated"
+      ]
+    },
+    {
       "id": "arxiv-2608.13309",
       "tag": "MICCAI 2026",
       "title": "How Good are Foundation Models in Longitudinal MRI Disease Progression Reasoning?",
@@ -273,6 +342,7 @@
       "includeInProfile": true,
       "includeInCv": true,
       "discoveredFrom": [
+        "Crossref",
         "OpenAlex",
         "Semantic Scholar",
         "arXiv"
@@ -344,47 +414,6 @@
         "doi": "10.48550/arxiv.2606.27376",
         "openAlex": "W7166108033",
         "semanticScholar": "bd952d4cdfecff62a071be496d853b84ca21122c",
-        "dblp": null
-      },
-      "includeInProfile": true,
-      "includeInCv": true,
-      "discoveredFrom": [
-        "OpenAlex",
-        "Semantic Scholar",
-        "arXiv",
-        "curated"
-      ]
-    },
-    {
-      "id": "S3",
-      "tag": "ECCV 2026",
-      "title": "Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models",
-      "authors": "Shravan Venkatraman, Ritesh Thawkar, Omkar Thawakar, Rao Muhammad Anwer, Hisham Cholakkal, Salman Khan, Fahad Shahbaz Khan",
-      "type": "Conference",
-      "status": null,
-      "link": "https://doi.org/10.1007/978-3-032-37464-6_3",
-      "linkLabel": "View Paper",
-      "resources": [
-        {
-          "label": "Project",
-          "href": "https://mbzuai-oryx.github.io/VISE/"
-        },
-        {
-          "label": "Code",
-          "href": "https://github.com/mbzuai-oryx/VISE"
-        },
-        {
-          "label": "Preprint",
-          "href": "https://arxiv.org/abs/2606.27373"
-        }
-      ],
-      "abstract": "Recently, self-evolving large multimodal models (LMMs) have received attention for improving visual reasoning in a purely unsupervised setting. However, multi-role self-play and self-consistency reward schemes in existing self-evolving LMMs optimize answer agreement without ensuring the decoder attends to visual content, relying instead on statistical language priors to produce self consistent outputs. This leads to a persistent failure mode we term visual under-conditioning, where the decoder relies on language priors rather than the image during generation, manifesting as insufficient attention to visual tokens. As a result, current self-evolving LMMs struggle on vision--language understanding tasks such as image captioning and visual question answering. To address this, we propose VISE (Visual Invariance Self-Evolution), a purely unsupervised self-evolving framework that directly regularizes the model's visual conditioning policy through two complementary invariance-based rewards: a geometric invariance reward that enforces spatial consistency under known transformations, and a semantic invariance reward that penalizes evidence-agnostic generation by requiring the model to recognize the absence of evidence when predicted regions are perturbed. VISE operates within a single model without specialist roles, external reward models, or annotations, and is trained on raw unlabeled images. Experiments on 18 benchmarks demonstrate the efficacy of our approach. Using Qwen3-VL-2B as the base model, VISE achieves gains of $+16.85$ CIDEr on COCO and $+19.66$ CIDEr on TextCaps, reduces object hallucination by $5.0$ Chair-I points, and generalizes across four model families and scales. Our code and models are available at https://mbzuai-oryx.github.io/VISE",
-      "sortDate": "2026-09-11",
-      "sourceIds": {
-        "arxiv": "2606.27373",
-        "doi": "10.1007/978-3-032-37464-6_3",
-        "openAlex": "W7166183413",
-        "semanticScholar": "cdb8c3321bd295a78fd564631803600411f18b2c",
         "dblp": null
       },
       "includeInProfile": true,
